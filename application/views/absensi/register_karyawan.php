@@ -7,7 +7,6 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
@@ -41,10 +40,10 @@ section{
     position: relative;
     width: 450px;
     height: 605px;
-    background: transparent;
+    /* background: transparent; */
     border: 2px solid rgba(255,255,255,0.5);
     border-radius: 20px;
-    backdrop-filter: blur(15px);
+    /* backdrop-filter: blur(15px); */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -144,11 +143,11 @@ button{
     
         <div class="form-box">
             <div class="form-value">
-            <form class="content " action="<?php echo base_url('Auth/aksi_register') ?>" encytpe>
+            <form class="content " action="<?php echo base_url('auth/aksi_register_admin') ?>" >
                     <h2>Register</h2>
                     <div class="inputbox">
                     <ion-icon name="person"></ion-icon>
-                        <input type="text" name="username" required>
+                        <input type="text" name="name" required>
                         <label for="">Username</label>
                     </div>
 
@@ -181,7 +180,7 @@ button{
                     <br>
                     <a href="<?php echo base_url('absensi/login') ?>" class="text-primary">Login</a>
                     <br>
-                    <a href="<?php echo base_url('absensi/register_karyawan') ?>">Register Karyawan </a>
+                    <a href="<?php echo base_url('absensi/register') ?>">Register</a>
                     <br>
                     <div class="register">
                     </div>

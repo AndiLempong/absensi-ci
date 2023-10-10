@@ -14,36 +14,60 @@ class Auth extends CI_Controller {
 	}
 
 	public function aksi_login()
-	{
-	$email = $this->input->post ('email', true);
-	$password= $this->input->post ('password', true);
-	$data = [ 'email' => $email, ];
-	$query = $this->m_model->getwhere('admin', $data);
-	$result = $query->row_array();
+    {
+        $email = $this->input->post('email', true);
+        $password = $this->input->post('password', true);
+        $data = ['email' => $email,];
+        $query = $this->m_model->getwhere('admin', $data);
+        $result = $query->row_array();
 
-	if (!empty($result) && md5($password) === $result['password']) {
-		$data = [
-			'logged_in'   => TRUE,
-			'email'       => $result['email'],
-			'username'    => $result['username'],
-			'role'        => $result['role'],
-			'id'          => $result['id'],
-		];
-		$this->session->set_userdata($data);
-		if ($this->session->userdata('role') == 'admin') {
-			redirect(base_url()."admin");
-		}elseif ($this->session->userdata('role') == 'keuangan') {
-			redirect(base_url()."keuangan");
-		} else {
-			redirect(base_url()."auth");
-		}
-	} else {
-		redirect(base_url()."auth");
+        if (!empty($result) && md5($password) === $result['password']) {
+            $data = [
+                'logged_in' => true,
+                'email' => $result['email'],
+                'username' => $result['username'],
+                'role' => $result['role'],
+                'id' => $result['id'],
+            ];
+            $this->session->set_userdata($data);
+            if ($this->session->userdata('role') == 'admin') {
+                redirect(base_url('admin/dashboard'));
+            }elseif ($this->session->userdata('role') == 'karyawan') {
+            redirect(base_url('karyawan/karyawan'))  ;
+            } else {
+                redirect(base_url('absensi/login'));
+            }
+        } else {
+            redirect(base_url('karyawan/index'));
+        }
+    }
+
+	public function aksi_register()
+	{
+	$data = [
+		'username' => $this->input->post('username'),
+		'email' => $this->input->post('email'),
+		'password' => $this->input->post('password'),
+		'nama_depan' => $this->input->post('nama_depan'),
+		'nama_belakang' => $this->input->post('nama_belakang'),
+	];
+
+	$this->m_model->tambah_data('admin', $data);
+	redirect(base_url('absensi/login'));
 	}
-	function logout(){
-		$this->session->sess_destroy();
-		redirect(base_url('auth'));
+
+	public function aksi_register_admin()
+	{
+	$data = [
+		'username' => $this->input->post('username'),
+		'email' => $this->input->post('email'),
+		'password' => $this->input->post('password'),
+		'nama_depan' => $this->input->post('nama_depan'),
+		'nama_belakang' => $this->input->post('nama_belakang'),
+	];
+
+	$this->m_model->tambah_data('admin', $data);
+	redirect(base_url('absensi/login'));
 	}
-}
 
 }
