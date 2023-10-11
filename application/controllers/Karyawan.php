@@ -6,4 +6,16 @@ class Karyawan extends CI_Controller {
 	{
 		$this->load->view('karyawan/index');
 	}
+
+	public function izin()
+	{
+		$this->load->view('karyawan/izin');
+	}
+	public function absensi()
+	{
+		// $data['absensi'] = $this->m_model->get_data('absensi')->result();
+		$this->load->view('karyawan/absensi');
+	}
+
 }
+?>

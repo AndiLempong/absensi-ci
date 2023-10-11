@@ -26,4 +26,5 @@ class Absensi extends CI_Controller {
 		$this->load->view('absensi/register_karyawan');
 	}
 
+	
 }

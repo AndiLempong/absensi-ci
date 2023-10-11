@@ -21,6 +21,15 @@ class M_model extends CI_Model{
         $this->db->insert($table, $data);
         return $this->db->insert_id();
     }
+
+//m_model admin
+    public function register($data) {
+        $this->db->insert('admin', $data);
+    }
+    public function register_karyawan($data) {
+        $this->db->insert('admin', $data);
+    }
+
     public function get_by_id($tabel, $id_column, $id)
     {
         $data=$this->db->where($id_column, $id)->get($tabel);
