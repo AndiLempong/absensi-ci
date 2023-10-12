@@ -18,6 +18,7 @@
             background-size: 100% 100%;
         }
     </style>
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 *{
@@ -141,7 +142,7 @@ button{
 </head>
 
 <body>
-    
+    <!-- form login -->
 <section>
     
         <div class="form-box">

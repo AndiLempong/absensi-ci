@@ -143,11 +143,11 @@ button{
     
         <div class="form-box">
             <div class="form-value">
-            <form class="content " action="<?php echo base_url('auth/aksi_register_admin') ?>" method="post">
+            <form class="content " action="<?php echo base_url('Auth/aksi_register_admin') ?>" method="post">
                     <h2>Register</h2>
                     <div class="inputbox">
                     <ion-icon name="person"></ion-icon>
-                        <input type="text" name="name" required>
+                        <input type="text" name="username" required>
                         <label for="">Username</label>
                     </div>
 

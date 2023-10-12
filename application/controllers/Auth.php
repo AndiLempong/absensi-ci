@@ -67,7 +67,20 @@ class Auth extends CI_Controller {
 		'nama_belakang' => $this->input->post('nama_belakang'),
 	];
 
-	$this->m_model->tambah_data('admin', $data);
+	$this->m_model->register($data);
+	redirect(base_url('absensi/login'));
+	}
+	public function aksi_register_karyawan()
+	{
+	$data = [
+		'username' => $this->input->post('username'),
+		'email' => $this->input->post('email'),
+		'password' => $this->input->post('password'),
+		'nama_depan' => $this->input->post('nama_depan'),
+		'nama_belakang' => $this->input->post('nama_belakang'),
+	];
+
+	$this->m_model->register_karyawan($data);
 	redirect(base_url('absensi/login'));
 	}
 

@@ -2,6 +2,12 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Karyawan extends CI_Controller {
+	function __construct()
+	{
+		parent::__construct();
+		$this->load->model('m_model');
+	}
+
 	public function index()
 	{
 		$this->load->view('karyawan/index');
@@ -13,8 +19,13 @@ class Karyawan extends CI_Controller {
 	}
 	public function absensi()
 	{
-		// $data['absensi'] = $this->m_model->get_data('absensi')->result();
-		$this->load->view('karyawan/absensi');
+		$data['absensi'] = $this->m_model->get_data('absensi')->result();
+		$this->load->view('karyawan/absensi', $data);
+	}
+
+	public function profil()
+	{
+		$this->load->view('karyawan/profil');
 	}
 
 }
