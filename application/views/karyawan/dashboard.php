@@ -41,7 +41,7 @@
         margin: 0;
         padding-left:50vh;
         min-height: 100vh;
-        /* background-color: #EEEEEE; */
+        background-color: #EEEDED;
     } 
 </style>
 
@@ -57,11 +57,10 @@
     >
       <i class="bi bi-filter-left px-2 bg-gray-900 rounded-md"></i>
     </span>
-    <div
-      class="sidebar fixed top-0 bottom-0 lg:left-0 p-2 w-[300px] overflow-y-auto text-center bg-gray-900">
+    <div class="sidebar fixed top-0 bottom-0 lg:left-0 p-2 w-[300px] overflow-y-auto text-center bg-gray-900">
       <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">
       <i class="bi bi-speedometer2"></i>
-        <span class="text-[15px] ml-4 text-gray-200 font-bold">Dashboard</span>
+        <a href="<?php echo base_url('karyawan/dashboard')?>" class="text-[15px] ml-4 text-gray-200 font-bold">Dashboard</a>
       </div>
 
       <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">
@@ -70,8 +69,8 @@
       </div>
 
       <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">
-      <i class="bi bi-person-circle"></i>
-        <span class="text-[15px] ml-4 text-gray-200 font-bold">History Absensi</span>
+      <i class="fa-solid fa-clock-rotate-left" style="color: #ffffff;"></i>
+        <a href="<?php echo base_url('karyawan/history')?>" class="text-[15px] ml-4 text-gray-200 font-bold">History Absensi</a>
       </div>
       
       <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">
@@ -80,13 +79,13 @@
       </div>
 
       <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">
-        <i class="bi bi-table"></i>
+      <i class="fa-solid fa-user-minus" style="color: #ffffff;"></i>
        <a href="<?php echo base_url('karyawan/izin')?>"  class="text-[15px] ml-4 text-gray-200 font-bold">Izin</a>
       </div>
 
       <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">
-        <a href="<?php echo base_url('karyawan/profil')?>" class="text-[15px] ml-4 text-gray-200 font-bold">Edit Profil</a>
-      <i class="fa-solid fa-address-card" style="color: #ffffff;"></i>
+          <i class="fa-solid fa-address-card" style="color: #ffffff;"></i>
+        <a href="<?php echo base_url('karyawan/profil')?>" class="text-[15px] ml-4 text-gray-200 font-bold">Profil</a>
       </div>
 
       <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white" onclick="dropdown()">
@@ -235,7 +234,7 @@
         <div class="col-12 card p-1">
             <div class="card-body min-vh-50 align-items-center">
                 <div class="card w-100 m-auto p-2">
-                    <form action="<?php echo base_url('karyawan/index')?>" method="post">
+                    <form action="<?php echo base_url('karyawan/dashboard')?>" method="post">
                     <table class="table table-striped">
                         <thead>
                             <tr>

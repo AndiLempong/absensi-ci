@@ -13,96 +13,15 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 
-<script>
-* {
-    margin: 0;
-    padding: 0
-}
+<style>
+     body {
 
-body {
-    background-color: #000
-}
-
-.card {
-    width: 350px;
-    background-color: #efefef;
-    border: none;
-    cursor: pointer;
-    transition: all 0.5s;
-}
-
-.image img {
-    transition: all 0.5s
-}
-
-.card:hover .image img {
-    transform: scale(1.5)
-}
-
-.btn {
-    height: 140px;
-    width: 140px;
-    border-radius: 50%
-}
-
-.name {
-    font-size: 22px;
-    font-weight: bold
-}
-
-.idd {
-    font-size: 14px;
-    font-weight: 600
-}
-
-.idd1 {
-    font-size: 12px
-}
-
-.number {
-    font-size: 22px;
-    font-weight: bold
-}
-
-.follow {
-    font-size: 12px;
-    font-weight: 500;
-    color: #444444
-}
-
-.btn1 {
-    height: 40px;
-    width: 150px;
-    border: none;
-    background-color: #000;
-    color: #aeaeae;
-    font-size: 15px
-}
-
-.text span {
-    font-size: 13px;
-    color: #545454;
-    font-weight: 500
-}
-
-.icons i {
-    font-size: 19px
-}
-
-hr .new1 {
-    border: 1px solid
-}
-
-.join {
-    font-size: 14px;
-    color: #a0a0a0;
-    font-weight: bold
-}
-
-.date {
-    background-color: #ccc
-}
-</script>
+        margin: 0;
+        padding-left:50vh;
+        min-height: 100vh;
+        /* background-color: #EEEEEE; */
+    } 
+</style>
 
 <!-- JAM -->
 <script type="text/javascript">
@@ -132,29 +51,210 @@ hr .new1 {
         margin: 0;
         padding-left:50vh;
         min-height: 100vh;
-        /* background-color: #EEEEEE; */
+        background-color: #EEEDED;
     } 
 </style>
 
 </head>
 
 <body>
-<div class="container mt-4 d-flex justify-content-center"> <div class="card p-4"> <div class=" image d-flex flex-column justify-content-center align-items-center"> <button class="btn btn-secondary"> <img src="https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=" height="100" width="100" /></button> <div class="d-flex flex-row justify-content-center align-items-center gap-2"></div> <div class="d-flex flex-row justify-content-center align-items-center mt-3">  </div> <div class=" d-flex mt-2"> </div> <div class="text mt-3"> <span>Eleanor Pena is a creator of minimalistic x bold graphics and digital artwork.<br><br> Artist/ Creative Director by Day #NFT minting@ with FND night. </span> </div> <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center">   </div> <div class=" px-2 rounded mt-4 date "> </div> </div> </div>
-</div>
+        </header>
+        <br>
+        <div class="card m-auto p-5">
 
+<br>
 
-          <!-- SIDEBAR -->
-<span
-      class="absolute text-white text-4xl top-5 left-4 cursor-pointer"
-      onclick="openSidebar()"
-    >
+<div>
+  <?php $this->session->flashdata('message') ?></div>
+<div class="row d-flex">
+        <button class="border border-0 btn btn-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <?php if (!empty($row->foto)): ?>
+            <img class="rounded-circle" height="150" width="150" src="<?php echo base64_decode($row->foto);?>">
+            <?php else: ?>
+            <img class="rounded-circle" height="150" width="150"
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png" />
+            <?php endif;?>
+        </button>
+    <br>
+    <br>
+    <br>
+    <br>
+    <form method="post" action="" enctype="multipart/form_data">
+        <input name="id_siswa" type="hidden">
+        <div class="d-flex flex-row ">
+
+            <div class="p-2 col-6">
+                <label for="" class="form-label fs-5 ">Email </label>
+                <input type="text" class="form-control" id="email" name="email" placeholder="Email">
+            </div>
+            <div class="p-2 col-6">
+                <label for="" class="form-label fs-5">Username </label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="d-flex flex-row ">
+            <div class="p-2 col-6 >
+            <label for=" nama="" class="form-label fs-5">Password Baru </label>
+                <input type="text" class="form-control" id="password_baru" name="password_baru"
+                    placeholder="Password Baru" value=>
+            </div>
+            <div class="p-2 col-6 >
+            <label for=" nama="" class="form-label fs-5"> Konfirmasi password</label>
+                <input type="text" class="form-control" id="password_konfirmasi" name="password_konfirmasi"
+                    placeholder="Konfirmasi Paswword" value=>
+            </div>
+        </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Foto Profile</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="container w-75 m p-3">
+                        <form method="post" action=""
+                            enctype="multipart/form-data" class="row">
+                            <div class="mb-3 col-12">
+                                <label for="nama" class="form-label">Foto:</label>
+                                <input type="hidden" class="form-control" id="id" name="id"
+                                    value="<?php echo $this->session->userdata('id'); ?>">
+                                <input type="hidden" name="base64_image" id="base64_image">
+                                <input class="form-control" type="file" name="userfile" id="userfile"
+                                    accept="image/*">
+                            </div>
+                            <div class="col-12 text-end">
+                                <input type="submit" class="btn btn-sm btn-primary px-3" name="submit"
+                                    value="Ubah Foto"></input>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <a class="btn btn-danger" href="">Hapus
+                            Foto</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex justify-content-between">
+            <div>
+                <a href="<?php echo base_url('karyawan/profil'); ?>"
+                    class=" flex items-center p-2 m-10 w-auto bg-red-500 hover:bg-red-700 text-white font-bold py-2  rounded w-7/6">
+                    <span>Kembali</span>
+                </a>
+            </div>
+            <div>
+                <button type="submit"
+                    class="flex items-center p-2 m-10 w-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2  rounded w-7/6"
+                    name=" submit">Confirm</button>
+            </div>
+        </div>
+
+  <!-- <div class="card m-auto p-5">
+<div>
+  <?php $this->session->flashdata('message') ?></div>
+<div class="row d-flex">
+        <button class="border border-0 btn btn-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <?php if (!empty($row->foto)): ?>
+            <img class="rounded-circle" height="200" width="200" src="<?php echo base64_decode($row->foto);?>">
+            <?php else: ?>
+            <img class="rounded-circle" height="200" width="200" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png" />
+            <?php endif;?>
+        </button>
+    <br>
+    <br>
+    <form method="post" action="" enctype="multipart/form_data">
+        <input name="id_siswa" type="hidden">
+        <div class="d-flex flex-row ">
+
+            <div class="p-5 col-6">
+                <label for="" class="form-label fs-5 ">Email </label>
+                <input type="text" class="form-control" id="email" name="email" placeholder="Email">
+            </div>
+            <div class="p-5 col-6">
+                <label for="" class="form-label fs-5">Username </label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="d-flex flex-row ">
+            <div class="p-5 col-6 >
+            <label for=" nama="" class="form-label fs-5">Password Baru </label>
+                <input type="text" class="form-control" id="password_baru" name="password_baru"
+                    placeholder="Password Baru" value=>
+            </div>
+            <div class="p-5 col-6 >
+            <label for=" nama="" class="form-label fs-5"> Konfirmasi password</label>
+                <input type="text" class="form-control" id="password_konfirmasi" name="password_konfirmasi"
+                    placeholder="Konfirmasi Paswword" value=>
+            </div>
+        </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Foto Profile</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="container w-75 m p-3">
+                        <form method="post" action=""
+                            enctype="multipart/form-data" class="row">
+                            <div class="mb-3 col-12">
+                                <label for="nama" class="form-label">Foto:</label>
+                                <input type="hidden" class="form-control" id="id" name="id"
+                                    value="">
+                                <input type="hidden" name="base64_image" id="base64_image">
+                                <input class="form-control" type="file" name="userfile" id="userfile"
+                                    accept="image/*">
+                            </div>
+                            <div class="col-12 text-end">
+                                <input type="submit" class="btn btn-sm btn-primary px-3" name="submit"
+                                    value="Ubah Foto"></input>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <a class="btn btn-danger" href="">Hapus
+                            Foto</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex justify-content-between">
+            <div>
+                <a href="<?php echo base_url('karyawan/dashboard'); ?>"
+                    class=" flex items-center p-2 m-10 w-auto bg-red-500 hover:bg-red-700 text-white font-bold py-2  rounded w-7/6">
+                    <span>Kembali</span>
+                </a>
+            </div>
+            <div>
+            <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                 <a href="<?php echo base_url('karyawan /edit_profil') ?>" class="btn btn-warning">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                       <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                          <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                        </svg></a>
+            </div>
+        </div> -->
+
+  
+  <!-- SIDEBAR -->
+  <!-- <span
+        class="absolute text-white text-4xl top-5 left-4 cursor-pointer"
+        onclick="openSidebar()"
+      >
       <i class="bi bi-filter-left px-2 bg-gray-900 rounded-md"></i>
-    </span>
-    <div
-      class="sidebar fixed top-0 bottom-0 lg:left-0 p-2 w-[300px] overflow-y-auto text-center bg-gray-900">
+      </span> -->
+    <div class="sidebar fixed top-0 bottom-0 lg:left-0 p-2 w-[300px] overflow-y-auto text-center bg-gray-900">
       <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">
       <i class="bi bi-speedometer2"></i>
-        <span class="text-[15px] ml-4 text-gray-200 font-bold">Dashboard</span>
+        <a href="<?php echo base_url('karyawan/dashboard')?>" class="text-[15px] ml-4 text-gray-200 font-bold">Dashboard</a>
       </div>
 
       <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">
@@ -163,8 +263,8 @@ hr .new1 {
       </div>
 
       <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">
-      <i class="bi bi-person-circle"></i>
-        <span class="text-[15px] ml-4 text-gray-200 font-bold">History Absensi</span>
+      <i class="fa-solid fa-clock-rotate-left" style="color: #ffffff;"></i>
+        <a href="<?php echo base_url('karyawan/history')?>" class="text-[15px] ml-4 text-gray-200 font-bold">History Absensi</a>
       </div>
       
       <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">
@@ -173,13 +273,13 @@ hr .new1 {
       </div>
 
       <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">
-        <i class="bi bi-table"></i>
+      <i class="fa-solid fa-user-minus" style="color: #ffffff;"></i>
        <a href="<?php echo base_url('karyawan/izin')?>"  class="text-[15px] ml-4 text-gray-200 font-bold">Izin</a>
       </div>
 
       <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">
-        <a href="<?php echo base_url('karyawan/profil')?>" class="text-[15px] ml-4 text-gray-200 font-bold">Edit Profil</a>
-      <i class="fa-solid fa-address-card" style="color: #ffffff;"></i>
+        <i class="fa-solid fa-address-card" style="color: #ffffff;"></i>
+        <a href="<?php echo base_url('karyawan/profil')?>" class="text-[15px] ml-4 text-gray-200 font-bold">Profil</a>
       </div>
 
       <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white" onclick="dropdown()">
@@ -192,6 +292,7 @@ hr .new1 {
         </div>
       </div>
       <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white" onclick="dropdown()">
+
       <!-- jam -->
     <!-- <?php
     date_default_timezone_set("Asia/jakarta");
@@ -205,7 +306,7 @@ hr .new1 {
         $thn=date("Y");
         echo("<b>$hari[$hr],$tgl $bulan[$bln] $thn</b>");
     ?> -->
-  <!-- <br> -->
+
     <span id="jam"></span>
     
     <script type="text/javascript">

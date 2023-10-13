@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="stylesheet" href="index.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -9,170 +8,68 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-    <style>
-        body {
-            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7Ahs80HGZ4ZTTKHIsrQhvhcb8dbCdtGu6mIDAvadP-s6cmKnB6XY2gmH0eJj941Mf0Yc&usqp=CAU');
-            background-repeat: no-repeat;
-            background-attachment: fixed; 
-            background-size: 100% 100%;
-        }
-    </style>
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
-*{
-    margin: 0;
-    padding: 0;
-    font-family: 'poppins',sans-serif;
-}
-section{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    width: 100%;
-    
-    background: url('background6.jpg')no-repeat;
-    background-position: center;
-    background-size: cover;
-}
-.form-box{
-    position: relative;
-    width: 350px;
-    height: 400px;
-    background: transparent;
-    border: 2px solid rgba(255,255,255,0.5);
-    border-radius: 20px;
-    backdrop-filter: blur(15px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-}
-h2{
-    font-size: 2em;
-    color: #fff;
-    text-align: center;
-}
-.inputbox{
-    position: relative;
-    margin: 30px 0;
-    width: 310px;
-    border-bottom: 2px solid #fff;
-}
-.inputbox label{
-    position: absolute;
-    top: 50%;
-    left: 5px;
-    transform: translateY(-50%);
-    color: #fff;
-    font-size: 1em;
-    pointer-events: none;
-    transition: .5s;
-}
-input:focus ~ label,
-input:valid ~ label{
-top: -5px;
-}
-.inputbox input {
-    width: 100%;
-    height: 45px;
-    background: transparent;
-    border: none;
-    outline: none;
-    font-size: 1em;
-    padding:0 35px 0 5px;
-    color: #fff;
-}
-.inputbox ion-icon{
-    position: absolute;
-    right: 8px;
-    color: #fff;
-    font-size: 1.2em;
-    top: 20px;
-}
-.forget{
-    margin: -15px 0 15px ;
-    font-size: .9em;
-    color: #fff;
-    display: flex;
-    justify-content: space-between;  
-}
-
-.forget label input{
-    margin-right: 3px;
-    
-}
-.forget label a{
-    color: #fff;
-    text-decoration: none;
-}
-.forget label a:hover{
-    text-decoration: underline;
-}
-button{
-    width: 100%;
-    height: 40px;
-    border-radius: 40px;
-    background: #fff;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    font-size: 1em;
-    font-weight: 600;
-}
-.register{
-    font-size: .9em;
-    color: #fff;
-    text-align: center;
-    margin: 25px 0 10px;
-}
-.register p a{
-    text-decoration: none;
-    color: #fff;
-    font-weight: 600;
-}
-.register p a:hover{
-    text-decoration: underline;
-}
-
-</style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
 
 </head>
-
+<style>
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
+.h-custom {
+height: calc(100% - 73px);
+}
+@media (max-width: 450px) {
+.h-custom {
+height: 100%;
+}
+}
+</style>
 <body>
-    <!-- form login -->
-<section>
-    
-        <div class="form-box">
-            <div class="form-value">
-            <form class="content " action="<?php echo base_url('Auth/aksi_login') ?>" >
-                    <h2>Login</h2>
-                    <div class="inputbox">
-                        <ion-icon name="mail"></ion-icon>
-                        <input name="email"type="email" required>
-                        <label for="email">Email</label>
-                    </div>
-                    <div class="inputbox">
-                    <ion-icon name="key"></ion-icon>
-                        <input name="password"type="password" required>
-                        <label for="password">Password</label>
-                    </div>
-                    <div class="forget">
-                        <label for=""><input type="checkbox">Remember Me  <a href="#">Forget Password</a></label>
-                    </div>
-                    <button type="submit" class="btn btn-dark">Login</button>
-                    <div class="register">
-                        <p>Don't have a account <a href="<?php echo base_url('absensi/register') ?>" class="text-primary">Register</a></p>
-                    </div>
-                </form>
+<section class="vh-100">
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-9 col-lg-6 col-xl-5">
+        <img src="https://img.freepik.com/free-vector/privacy-policy-concept-illustration_114360-7853.jpg?w=740&t=st=1697187687~exp=1697188287~hmac=2ba5c1d4c49bc3f7596c7ea052d5cb3fd0baeff6f5005c791ec7a78b898c7f68" class="img-fluid" alt="Sample image">
+      </div>
+      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        <form action="<?php echo base_url('Auth/aksi_login') ?>">
+          <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
+          </div>
+
+          <!-- Inputan Email -->
+          <div class="form-outline mb-3">
+              <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+              <input type="text" name="email" id="form3Example3" placeholder="Masukkan Email" />
+          </div>
+
+          <!-- Inputan Password -->
+          <div class="form-outline mb-3">
+              <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+              <input type="text" name="password" id="form3Example4" placeholder="Masukkan Password" />
+          </div>
+
+          <div class="d-flex justify-content-between align-items-center">
+            <!-- Checkbox -->
+            <div class="form-check mb-0">
+              <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
+              <label class="form-check-label" for="form2Example3">Remember me</label>
             </div>
-        </div>
-    </section>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-</body>
+          </div>
+
+          <div class="text-center text-lg-start mt-4 pt-2">
+            <button type="submit" class="btn btn-primary">Login</button>
+            <p class="small fw-bold mt-2 pt-1 mb-0">Belum Punya Akun? <a href="<?php echo base_url('absensi/register')?>"
+                class="link-primary">Register</a></p>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
 </body>
 </html>
-

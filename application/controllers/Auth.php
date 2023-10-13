@@ -39,7 +39,7 @@ class Auth extends CI_Controller {
                 redirect(base_url('absensi/login'));
             }
         } else {
-            redirect(base_url('karyawan/index'));
+            redirect(base_url('karyawan/dashboard'));
         }
     }
 

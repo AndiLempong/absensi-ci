@@ -8,9 +8,9 @@ class Karyawan extends CI_Controller {
 		$this->load->model('m_model');
 	}
 
-	public function index()
+	public function dashboard()
 	{
-		$this->load->view('karyawan/index');
+		$this->load->view('karyawan/dashboard');
 	}
 
 	public function izin()
@@ -27,6 +27,17 @@ class Karyawan extends CI_Controller {
 	{
 		$this->load->view('karyawan/profil');
 	}
+
+	public function edit_profil()
+	{
+		$this->load->view('karyawan/edit_profil');
+	}
+
+	public function history()
+	{
+		$this->load->view('karyawan/history');
+	}
+
 
 }
 ?>

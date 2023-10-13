@@ -12,14 +12,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 
-</head>
-<body>
-  
   <!-- JAM -->
-<script type="text/javascript">
+  <script type="text/javascript">
         window.onload = function() { jam(); }
        
         function jam() {
@@ -89,7 +84,7 @@
       </div>
 
       <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">
-        <i class="fa-solid fa-address-card" style="color: #ffffff;"></i>
+          <i class="fa-solid fa-address-card" style="color: #ffffff;"></i>
         <a href="<?php echo base_url('karyawan/profil')?>" class="text-[15px] ml-4 text-gray-200 font-bold">Profil</a>
       </div>
 
@@ -141,32 +136,3 @@
     </script>
       </div>
     </div>
-
-    <section>
-    <p class="text-gray-900 text-5xl dark:text-white">Absensi</p>
-    <div class="overview shadow-lg p-4 mb-3 bg-body rounded">
-      <div>
-        <textarea name="kegiatan" id="kegiatan" placeholder="Kegiatan ???" required></textarea>
-      </div>
-      <br>
-      <button type="button" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Absen</button>
-
-                    <!-- <script>
-Swal.fire({
-  icon: 'success',
-  title: 'Berhasil!',
-  text: 'Absen Berhasil.',
-  confirmButtonText: 'OK'
-}).then((result) => {
-  if (result.isConfirmed) {
-  }
-});
-
-</script> -->
-
-                </div>
-    </section>
-</div>
-</div>
-</body>
-</html>
