@@ -10,7 +10,8 @@ class Karyawan extends CI_Controller {
 
 	public function dashboard()
 	{
-		$this->load->view('karyawan/dashboard');
+		$data['karyawan'] = $this->m_model->get_data('karyawan')->result();
+		$this->load->view('karyawan/dashboard', $data);
 	}
 
 	public function izin()
@@ -22,6 +23,11 @@ class Karyawan extends CI_Controller {
 		$data['absensi'] = $this->m_model->get_data('absensi')->result();
 		$this->load->view('karyawan/absensi', $data);
 	}
+
+	// public function admin()
+	// {
+	// 	$this->load->view('karyawan/admin');
+	// }
 
 	public function profil()
 	{
@@ -37,6 +43,11 @@ class Karyawan extends CI_Controller {
 	{
 		$this->load->view('karyawan/history');
 	}
+
+	public function rekap_mingguan() {
+        $data['karyawan'] = $this->m_model->getAbsensiLast7Days();        
+        $this->load->view('karyawan/rekap_mingguan', $data);
+    }
 
 
 }

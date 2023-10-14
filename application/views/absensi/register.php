@@ -42,7 +42,7 @@ height: 100%;
           </div>
           
           <!-- Inputan Nama Depan -->
-          <div class="form-outline mb-4">
+          <div class="form-outline mb-3">
               <i class="fa-solid fa-user fa-lg me-3 fa-fw"></i>
               <input type="text" name="nama_depan" id="form3Example3" placeholder="Nama Depan" />
           </div>

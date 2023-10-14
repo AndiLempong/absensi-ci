@@ -28,20 +28,22 @@ height: 100%;
 }
 }
 </style>
+
 <body>
 <section class="vh-100">
+<div class="animated-image"></div>
   <div class="container-fluid h-custom">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-md-9 col-lg-6 col-xl-5">
         <img src="https://img.freepik.com/free-vector/privacy-policy-concept-illustration_114360-7853.jpg?w=740&t=st=1697187687~exp=1697188287~hmac=2ba5c1d4c49bc3f7596c7ea052d5cb3fd0baeff6f5005c791ec7a78b898c7f68" class="img-fluid" alt="Sample image">
       </div>
       <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-        <form action="<?php echo base_url('Auth/aksi_login') ?>">
+        <form action="<?php echo base_url('Auth/aksi_login') ?>" method="post">
           <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
           </div>
 
           <!-- Inputan Email -->
-          <div class="form-outline mb-3">
+          <div class="form-outline mb-3 ">
               <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
               <input type="text" name="email" id="form3Example3" placeholder="Masukkan Email" />
           </div>
