@@ -42,6 +42,26 @@ class M_model extends CI_Model{
         return $this->db->affected_rows();
     }
 
+// Absensi
+    public function getlast($table, $where) {
+        $this->db->select('*');
+        $this->db->from($table);
+        $this->db->where($where);
+        $this->db->order_by('id', 'DESC');
+        $this->db->limit(1);
+        return $this->db->get()->row();
+    }
+// izin
+    public function get($table, $where) {
+        $this->db->select('*');
+        $this->db->from($table);
+        $this->db->where($where);
+        $this->db->order_by('id', 'DESC');
+        $this->db->limit(1);
+        return $this->db->get()->row();
+    }
+
+
 // Admin karyawan
 public function getAbsensiLast7Days() {
     $this->load->database();
@@ -71,4 +91,12 @@ public function getAbsensiLast7Days() {
             return false;
         }
     }
+
+    public function delete_karyawan($table, $field, $id)
+    {
+        $data=$this->db->delete($table, array($field => $id));
+        return $data;
+    }
+
+
 }

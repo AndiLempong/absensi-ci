@@ -12,14 +12,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 <style>
      body {
-
         margin: 0;
         padding-left:50vh;
         min-height: 100vh;
-        background-color: #EEEDED;
+        /* background-color: #000000; */
     } 
 </style>
 
@@ -27,7 +27,7 @@
 <body>
 
 <aside id="default-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
-   <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+   <div class="h-full px-3 py-4 overflow-y-auto bg-blue-50 dark:bg-blue-800">
       <ul class="space-y-2 font-medium">
          <li>
             <a href="<?php echo base_url('karyawan/dashboard')?>" class="flex items-center p-3 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
@@ -36,11 +36,11 @@
             </a>
          </li>
 
-            <a href="<?php echo base_url('karyawan/rekap_mingguan')?>" class="flex items-center p-3 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            <!-- <a href="<?php echo base_url('karyawan/rekap_mingguan')?>" class="flex items-center p-3 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M224 256A128 128 0 1 1 224 0a128 128 0 1 1 0 256zM209.1 359.2l-18.6-31c-6.4-10.7 1.3-24.2 13.7-24.2H224h19.7c12.4 0 20.1 13.6 13.7 24.2l-18.6 31 33.4 123.9 36-146.9c2-8.1 9.8-13.4 17.9-11.3c70.1 17.6 121.9 81 121.9 156.4c0 17-13.8 30.7-30.7 30.7H285.5c-2.1 0-4-.4-5.8-1.1l.3 1.1H168l.3-1.1c-1.8 .7-3.8 1.1-5.8 1.1H30.7C13.8 512 0 498.2 0 481.3c0-75.5 51.9-138.9 121.9-156.4c8.1-2 15.9 3.3 17.9 11.3l36 146.9 33.4-123.9z"/></svg>
                <span class="ml-3">Admin</span>
             </a>
-         </li>
+         </li> -->
 
          <li>
             <a href="<?php echo base_url('karyawan/history')?>" class="flex items-center p-3 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
@@ -76,11 +76,9 @@
                <span class="flex-1 ml-3 whitespace-nowrap">Log Out</span>
             </a>
          </li>
+         <li><span id="jam"></span></li>
 </aside>
 
-
-
-    <span id="jam"></span>
     <script type="text/javascript">
         window.onload = function() { jam(); }
        
@@ -116,7 +114,7 @@
                             </p>
                             <h5 class="mb-0">
                                 <small class="text-success ms-2">
-                                    <i class="fas fa-arrow-up fa-sm pe-1"></i> <svg xmlns="http://www.w3.org/2000/svg"
+                                   <svg xmlns="http://www.w3.org/2000/svg"
                                         height="3em" class="" viewBox="0 0 448 512">
                                         <style>
                                         svg {
@@ -158,7 +156,7 @@
                             </p>
                             <h5 class="text-muted mb-0"> <a href=""
                                     class=" fs-5 btn btn-sm text-dark">Data
-                                    Lengkap</a></h5>
+                                    Lengkap</a></h5>    
                         </div>
                     </div>
                 </div>
@@ -173,7 +171,7 @@
                             <h5 class="mb-0">
 
                                 <small class="text-danger ms-2">
-                                    <i class="fas fa-arrow-down fa-sm pe-1"></i><svg xmlns="http://www.w3.org/2000/svg"
+                                    <svg xmlns="http://www.w3.org/2000/svg"
                                         height="3em" viewBox="0 0 448 512">
                                         <path
                                             d="M96 0C43 0 0 43 0 96V416c0 53 43 96 96 96H384h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V384c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H384 96zm0 384H352v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16zm16 48H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z" />
@@ -193,9 +191,8 @@
         </section>
 </div>
 </div>
-
-
-        <div class="row">
+<!-- tabel -->
+    <div class="row">
         <div class="col-11 card p-1">
             <div class="card-body min-vh-50 align-items-center">
                 <div class="card w-100 m-auto p-2">
@@ -208,7 +205,7 @@
                                 <th scope="col">Username</th>
                                 <th scope="col">Nama Depan</th>
                                 <th scope="col">Nama Belakang</th>
-                                <th scope="col">Status</th>
+                                <th scope="col">Role</th>
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>
@@ -220,9 +217,15 @@
                                     <td class="whitespace-nowrap px-4 py-2 text-gray-700"><?php echo $row->username ?></td>
                                     <td class="whitespace-nowrap px-4 py-2 text-gray-700"><?php echo $row->nama_depan ?> 
                                     <td class="whitespace-nowrap px-4 py-2 text-gray-700"><?php echo $row->nama_belakang ?>  
-                                    <td class="whitespace-nowrap px-4 py-2 text-gray-700"><?php echo $row->status ?>  
+                                    <td class="whitespace-nowrap px-4 py-2 text-gray-700"><?php echo $row->role ?>  
+                                    <td class="text-center">
+                                    <button onclick="hapus(<?php echo $row->id ?>)" class="btn btn-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"   class="bi bi-trash" viewBox="0 0 16 16">
+                                      <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
+                                          <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+                                             </svg></button>
                             </tr>
                             <?php endforeach ?>
+                            <!-- <button type="button" class="btn btn-primary">Delete</button> -->
                         </tbody>
 
     <script type="text/javascript">
@@ -236,5 +239,31 @@
         document.querySelector(".sidebar").classList.toggle("hidden");
       }
     </script>
+    <script>
+        function hapus(id) {
+            swal.fire({
+                title: 'Apakah anda yakin untuk menghapus data ini?',
+                text: "Data ini akan terhapus permanen",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batal',
+                confirmButtonText: 'Ya Hapus'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil Dihapus',
+                        showConfirmButton: false,
+                        timer: 1500,
+
+                    }).then(function() {
+                        window.location.href = "<?php echo base_url('karyawan/hapus_dashboard/')?>" + id;
+                    });
+                }
+            });
+        }
+        </script>
 </body>
 </html>

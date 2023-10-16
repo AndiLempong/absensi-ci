@@ -12,14 +12,16 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script> -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 
 <style>
      body {
-
         margin: 0;
         padding-left:50vh;
         min-height: 100vh;
-        background-color: #EEEDED;
+        /* background-color: #000000; */
     } 
 </style>
 
@@ -27,18 +29,12 @@
 <body>
 
 <aside id="default-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
-   <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+   <div class="h-full px-3 py-4 overflow-y-auto bg-blue-50 dark:bg-blue-800">
       <ul class="space-y-2 font-medium">
          <li>
             <a href="<?php echo base_url('karyawan/dashboard')?>" class="flex items-center p-3 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><path d="M543.8 287.6c17 0 32-14 32-32.1c1-9-3-17-11-24L512 185V64c0-17.7-14.3-32-32-32H448c-17.7 0-32 14.3-32 32v36.7L309.5 7c-6-5-14-7-21-7s-15 1-22 8L10 231.5c-7 7-10 15-10 24c0 18 14 32.1 32 32.1h32v69.7c-.1 .9-.1 1.8-.1 2.8V472c0 22.1 17.9 40 40 40h16c1.2 0 2.4-.1 3.6-.2c1.5 .1 3 .2 4.5 .2H160h24c22.1 0 40-17.9 40-40V448 384c0-17.7 14.3-32 32-32h64c17.7 0 32 14.3 32 32v64 24c0 22.1 17.9 40 40 40h24 32.5c1.4 0 2.8 0 4.2-.1c1.1 .1 2.2 .1 3.3 .1h16c22.1 0 40-17.9 40-40V455.8c.3-2.6 .5-5.3 .5-8.1l-.7-160.2h32z"/></svg>
                <span class="ml-3">Dashboard</span>
-            </a>
-         </li>
-
-            <a href="<?php echo base_url('karyawan/rekap_mingguan')?>" class="flex items-center p-3 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M224 256A128 128 0 1 1 224 0a128 128 0 1 1 0 256zM209.1 359.2l-18.6-31c-6.4-10.7 1.3-24.2 13.7-24.2H224h19.7c12.4 0 20.1 13.6 13.7 24.2l-18.6 31 33.4 123.9 36-146.9c2-8.1 9.8-13.4 17.9-11.3c70.1 17.6 121.9 81 121.9 156.4c0 17-13.8 30.7-30.7 30.7H285.5c-2.1 0-4-.4-5.8-1.1l.3 1.1H168l.3-1.1c-1.8 .7-3.8 1.1-5.8 1.1H30.7C13.8 512 0 498.2 0 481.3c0-75.5 51.9-138.9 121.9-156.4c8.1-2 15.9 3.3 17.9 11.3l36 146.9 33.4-123.9z"/></svg>
-               <span class="ml-3">Admin</span>
             </a>
          </li>
 
@@ -76,12 +72,9 @@
                <span class="flex-1 ml-3 whitespace-nowrap">Log Out</span>
             </a>
          </li>
+         <li><span id="jam"></span></li>
 </aside>
-
-
-<!-- JAM -->
-    <span id="jam"></span>
-    <script type="text/javascript">
+<script type="text/javascript">
         window.onload = function() { jam(); }
        
         function jam() {
@@ -101,6 +94,45 @@
             return e;
         }
     </script>
+
+<div class="row">
+        <div class="col-11 card p-1">
+            <div class="card-body min-vh-50 align-items-center">
+                <div class="card w-100 m-auto p-2">
+                    <form action="<?php echo base_url('karyawan/history')?>" method="post">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">ID Karyawan</th>
+                                <th scope="col">Kegiatan</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Jam Masuk</th>
+                                <th scope="col">Jam Pulang</th>
+                                <th scope="col">Keterangan</th>
+                                <th scope="col">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $no = 0; foreach ($absensi as $row) : $no++ ?>
+                            <tr>
+                                    <td class="whitespace-nowrap px-4 py-2 text-gray-700"><?php echo $no ?></td> 
+                                    <td class="whitespace-nowrap px-4 py-2 text-gray-700"><?php echo $row->id ?></td>
+                                    <!-- <td class="whitespace-nowrap px-4 py-2 text-gray-700"><?php echo $row->id_karyawan ?></td> -->
+                                    <td class="whitespace-nowrap px-4 py-2 text-gray-700"><?php echo $row->kegiatan ?></td>
+                                    <td class="whitespace-nowrap px-4 py-2 text-gray-700"><?php echo $row->date ?></td>
+                                    <td class="whitespace-nowrap px-4 py-2 text-gray-700"><?php echo $row->jam_masuk ?> 
+                                    <td class="whitespace-nowrap px-4 py-2 text-gray-700"><?php echo $row->jam_pulang ?>  
+                                    <td class="whitespace-nowrap px-4 py-2 text-gray-700"><?php echo $row->keterangan_izin ?>  
+                                    <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                                    <button onclick="hapus(<?php echo $row->id ?>)" class="btn btn-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"   class="bi bi-trash" viewBox="0 0 16 16">
+                                      <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
+                                          <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+                                             </svg></button>
+                            </tr>
+                            <?php endforeach ?>
+                        </tbody>
+      </form>
       </div>
     </div>
 
@@ -115,5 +147,31 @@
         document.querySelector(".sidebar").classList.toggle("hidden");
       }
     </script>
+     <script>
+        function hapus(id) {
+            swal.fire({
+                title: 'Apakah anda yakin untuk menghapus data ini?',
+                text: "Data ini akan terhapus permanen",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batal',
+                confirmButtonText: 'Ya Hapus'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil Dihapus',
+                        showConfirmButton: false,
+                        timer: 1500,
+
+                    }).then(function() {
+                        window.location.href = "<?php echo base_url('karyawan/hapus_history')?>" + id;
+                    });
+                }
+            });
+        }
+        </script>
 </body>
 </html>

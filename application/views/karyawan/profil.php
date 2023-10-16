@@ -44,17 +44,6 @@
             return e;
         }
 </script>
-
-<style>
-     body {
-
-        margin: 0;
-        padding-left:50vh;
-        min-height: 100vh;
-        background-color: #EEEDED;
-    } 
-</style>
-
 </head>
 
 <body>
@@ -71,14 +60,41 @@
             <?php if (!empty($row->foto)): ?>
             <img class="rounded-circle" height="150" width="150" src="<?php echo base64_decode($row->foto);?>">
             <?php else: ?>
+              <center>
             <img class="rounded-circle" height="150" width="150"
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png" />
+                </center>
             <?php endif;?>
         </button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="container w-75 m p-3">
+                        <form method="post" action="<?php echo base_url('karyawan/upload_image'); ?>"
+                            enctype="multipart/form-data" class="row">
+                            <div class="mb-3 col-12">
+                                <label for="nama" class="form-label">Foto:</label>
+                                <input type="hidden" class="form-control" id="id" name="id"
+                                    value="<?php echo $this->session->userdata('id'); ?>">
+                                <input type="hidden" name="base64_image" id="base64_image">
+                                <input class="form-control" type="file" name="userfile" id="userfile"
+                                    accept="image/*">
+                            </div>
+                            <div class="modal-footer">
+                                <a class="btn btn-danger" href="<?php echo base_url('karyawan/upload_image'); ?>">Ganti
+                                    Foto</a>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
     <br>
     <br>
     <br>
     <br>
+    
     <form method="post" action="" enctype="multipart/form_data">
         <input name="id_siswa" type="hidden">
         <div class="d-flex flex-row ">
@@ -140,21 +156,21 @@
             </div>
         </div> -->
         <div class="flex justify-content-between">
-            <div>
+            <!-- <div>
                 <a href="<?php echo base_url('karyawan/dashboard'); ?>"
                     class=" flex items-center p-2 m-10 w-auto bg-red-500 hover:bg-red-700 text-white font-bold py-2  rounded w-7/6">
                     <span>Kembali</span>
                 </a>
+            </div> -->
+            
+                    <!-- <div class="modal-footer">
+                        <a class="btn btn-danger" href="<?php echo base_url('karyawan/hapus_image'); ?>">Hapus
+                            Foto</a>
+                    </div> -->
             </div>
-            <div>
-                <button type="submit"
-                    class="flex items-center p-2 m-10 w-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2  rounded w-7/6"
-                    name=" submit">Confirm</button>
-            </div>
-        </div>
 
         <aside id="default-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
-   <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+   <div class="h-full px-3 py-4 overflow-y-auto bg-blue-50 dark:bg-blue-800">
       <ul class="space-y-2 font-medium">
          <li>
             <a href="<?php echo base_url('karyawan/dashboard')?>" class="flex items-center p-3 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
@@ -163,11 +179,11 @@
             </a>
          </li>
 
-            <a href="<?php echo base_url('karyawan/rekap_mingguan')?>" class="flex items-center p-3 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            <!-- <a href="<?php echo base_url('karyawan/rekap_mingguan')?>" class="flex items-center p-3 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M224 256A128 128 0 1 1 224 0a128 128 0 1 1 0 256zM209.1 359.2l-18.6-31c-6.4-10.7 1.3-24.2 13.7-24.2H224h19.7c12.4 0 20.1 13.6 13.7 24.2l-18.6 31 33.4 123.9 36-146.9c2-8.1 9.8-13.4 17.9-11.3c70.1 17.6 121.9 81 121.9 156.4c0 17-13.8 30.7-30.7 30.7H285.5c-2.1 0-4-.4-5.8-1.1l.3 1.1H168l.3-1.1c-1.8 .7-3.8 1.1-5.8 1.1H30.7C13.8 512 0 498.2 0 481.3c0-75.5 51.9-138.9 121.9-156.4c8.1-2 15.9 3.3 17.9 11.3l36 146.9 33.4-123.9z"/></svg>
                <span class="ml-3">Admin</span>
             </a>
-         </li>
+         </li> -->
 
          <li>
             <a href="<?php echo base_url('karyawan/history')?>" class="flex items-center p-3 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
@@ -203,25 +219,11 @@
                <span class="flex-1 ml-3 whitespace-nowrap">Log Out</span>
             </a>
          </li>
+         <li><span id="jam"></span></li>
 </aside>
 
 
       <!-- jam -->
-    <!-- <?php
-    date_default_timezone_set("Asia/Jakarta");
-
-    $hari=array("Minggu","Senin","Selasa","Rabu","Kamis","Jum'at","Sabtu");
-        $bulan=array(1=>"Januari","Febuari","Maret","April","Mei","Juni","Juli","Agustus",
-                  "September","Oktober","September","November","Desember");
-        $tgl=date("d");
-        $bln=date("n");
-        $hr=date("w");
-        $thn=date("Y");
-        echo("<b>$hari[$hr],$tgl $bulan[$bln] $thn</b>");
-    ?> -->
-
-    <span id="jam"></span>
-    
     <script type="text/javascript">
         window.onload = function() { jam(); }
        
