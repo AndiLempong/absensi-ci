@@ -18,6 +18,7 @@
      body {
         margin: 0;
         padding-left:50vh;
+        padding-right:50vh;
         min-height: 100vh;
         /* background-color: #000000; */
     } 

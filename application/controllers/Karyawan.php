@@ -10,7 +10,7 @@ class Karyawan extends CI_Controller {
 
 	public function dashboard()
 	{
-		$data['karyawan'] = $this->m_model->get_data('karyawan')->result();
+		$data['absensi'] = $this->m_model->get_data('absensi')->result();
 		$this->load->view('karyawan/dashboard', $data);
 	}
 
@@ -130,38 +130,34 @@ class Karyawan extends CI_Controller {
 	   }
    	}
 
-	public function hapus_absensi($id)
-  	{
-    $this->m_model->delete('absensi', 'id', $id);
-    redirect(base_url('karyawan/history'));
-  	}
-
-	public function hapus_karyawan($id)
-  	{
-    $this->m_model->delete_karyawan('karyawan', 'id', $id);
-    redirect(base_url('karyawan/dashboard'));
-  	}
-
-
 	public function history()
 	{
 		$data['absensi'] = $this->m_model->get_data('absensi')->result();
 		$this->load->view('karyawan/history', $data);
 	}
 
-	public function rekap_harian()
+	public function hapus_history($id)
 	{
-		$this->load->view('karyawan/rekap_harian');
+	   $this->m_model->delete('absensi', 'id', $id);
+	   redirect(base_url('karyawan/history'));
 	}
 
-	public function rekap_mingguan()
-	{
-		$this->load->view('karyawan/rekap_mingguan');
-	}
+	public function pulang($id)
+{
+    date_default_timezone_set('Asia/Jakarta');
+    $waktu_sekarang = date('Y-m-d H:i:s');
+    $data = [
+        'jam_keluar' => $waktu_sekarang,
+        'status' => 'done'
+    ];
+    $this->m_model->ubah_data('absensi', $data, array('id'=> $id));
+    redirect(base_url('karyawan/history'));
+}
 
-	public function rekap_bulanan()
-	{
-		$this->load->view('karyawan/rekap_bulanan');
-	}
+	// public function hapus_dashboard($id)
+	// {
+	// 	$this->m_model->delete_db('dashboard', 'id', $id);
+	// 	redirect(base_url('karyawan/dashboard'));
+	// }
 }
 ?>

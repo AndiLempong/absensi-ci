@@ -40,4 +40,14 @@ function tampil_full_mapel_byid($id)
         return $stmt;
     }
 }
+function tampil_id_karyawan($id)
+{
+    $ci =& get_instance();
+    $ci->load->database();
+    $result = $ci->db->where('id', $id)->get('karyawan');
+    foreach ($result->result() as $c) {
+        $stmt= $c->nama_mapel;
+        return $stmt;
+    }
+}
 ?>

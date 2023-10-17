@@ -16,6 +16,12 @@ class M_model extends CI_Model{
         return $data;
     }
 
+    public function delete_db($table, $field, $id)
+    {
+        $data=$this->db->delete_db($table, array($field => $id));
+        return $data;
+    }
+
     public function tambah_data($table, $data)
     {
         $this->db->insert($table, $data);
@@ -61,8 +67,26 @@ class M_model extends CI_Model{
         return $this->db->get()->row();
     }
 
+    // mengambil data date dari 
+    public function getDataBulanan($date)
+    {
+        $start_date = date('Y-m-d');
+        $query = $this->db->select('date, kegiatan, jam_masuk, jam_pulang, keterangan_izin, status, COUNT(*) AS total_absences')
+        ->from('absensi')
+        ->where('date >=', $start_date)
+        ->get();
+    return $query->result_array();
+    }
 
-// Admin karyawan
+    public function getHarian($date)
+    {
+        $query = $this->db->select('date, kegiatan, jam_masuk, jam_pulang, keterangan_izin, status')
+        ->from('absensi')
+        ->where('date', date('Y-m-d'))
+        ->get();
+    return $query->result_array();
+    }
+
 public function getAbsensiLast7Days() {
     $this->load->database();
     $end_date = date('Y-m-d');
@@ -76,27 +100,62 @@ public function getAbsensiLast7Days() {
     return $query->result_array();
 }
 
-// Import
-    public function get_by_nisn($nisn)
-    {
-        $this->db->select('id_siswa');
-        $this->db->from('siswa');
-        $this->db->select('nisn', $nisn);
-        $query = $this->db->get();
-
-        if ($query->num_rows() > 0) {
-            $result = $query->row();
-            return $result->id_siswa;
-        } else {
-            return false;
-        }
-    }
-
-    public function delete_karyawan($table, $field, $id)
-    {
-        $data=$this->db->delete($table, array($field => $id));
-        return $data;
-    }
+public function getbulanan($bulan)
+  {
+        $this->db->from('absensi');
+        $this->db->where("DATE_FORMAT(absensi.date, '%m') =", $bulan);
+        $db = $this->db->get();
+        $result = $db->result();
+        return $result;
+  }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // public function get_by_nisn($nisn)
+    // {
+    //     $this->db->select('id_siswa');
+    //     $this->db->from('siswa');
+    //     $this->db->select('nisn', $nisn);
+    //     $query = $this->db->get();
+
+    //     if ($query->num_rows() > 0) {
+    //         $result = $query->row();
+    //         return $result->id_siswa;
+    //     } else {
+    //         return false;
+    //     }
+    // }
 }
