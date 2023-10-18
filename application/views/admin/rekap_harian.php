@@ -87,19 +87,24 @@
     <div class="relative min-h-screen md:flex" data-dev-hint="container">
         <main id="content" class="max-h-screen overflow-y-auto flex-1 p-6 lg:px-8">
             <div class="container mx-auto">
+                <form action="<?php echo base_url('admin/export_harian')?>" method = "post">
+                <input type="date" name="tanggal">
+                                    <button class="btn btn-light" type="submit" name="submit">Export</button>
+
+            </form>
                 <div class="grid grid-cols-1 px-2 md:grid-cols-3 rounded-t-lg py-2.5 bg-gray-700 text-white text-xl">
                     <div class="flex justify-center mb-2 md:justify-start md:pl-6">
                         REKAP HARIAN
                     </div>
 
-                    <a href="<?php echo base_url('admin/export_harian')?>" class="btn btn-secondary">Export <i class="fa-solid fa-file-arrow-down"></i> </a>
+                    <!-- <a href="<?php echo base_url('admin/export_harian')?>" class="btn btn-secondary">Export <i class="fa-solid fa-file-arrow-down"></i> </a> -->
                     
 
-                    <form action="<?php echo base_url('admin/rekap_harian')?>" method="post">
+                    <!-- <form action="<?php echo base_url('admin/rekap_harian')?>" method="post"> -->
                     
-                     <input type="date" name="tanggal" id="tanggal">
-                    <button class="btn btn-light" type="submit" name="submit">Submit</button>
-                  </form>
+                     <!-- <input type="date" name="tanggal" id="tanggal"> -->
+                    <!-- <button class="btn btn-light" type="submit" name="submit" <?php echo base_url('admin/rekap_harian')?>>Submit</button> -->
+                  <!-- </form> -->
                 </div>
                 <div class="overflow-x-auto w-full px-4 bg-white rounded-b-lg shadow">
                     <table class="my-4 w-full divide-y divide-gray-300 text-center">
@@ -116,32 +121,32 @@
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-300">
-                            <?php $no=0; foreach ($absensi as $harian): $no++ ?>
+                            <?php $no=0; foreach ($absensi_harian as $harian): $no++ ?>
                             <tr class="whitespace-nowrap">
                                 <td class="px-5 py-3 text-sm text-gray-500"><?php echo $no ?></td>
                                 <td class="px-5 py-3">
                                     <div class="text-sm text-gray-900">
-                                        <?php echo $harian['kegiatan']; ?>
+                                        <?php echo $harian->kegiatan; ?>
                                     </div>
                                 </td>
                                 <td class="px-5 py-3">
                                     <div class="text-sm text-gray-900">
-                                        <?php echo $harian['date']; ?>
+                                        <?php echo $harian->date; ?>
                                     </div>
                                 </td>  
                                 <td class="px-5 py-3">
                                     <div class="text-sm text-gray-900">
-                                        <?php echo $harian['jam_masuk']; ?>
+                                        <?php echo $harian->jam_masuk; ?>
                                     </div>
                                 </td>
                                 <td class="px-5 py-3">
                                     <div class="text-sm text-gray-900">
-                                        <?php echo $harian['jam_pulang']; ?>
+                                        <?php echo $harian->jam_pulang; ?>
                                     </div>
                                 </td>
                                 <td class="px-5 py-3">
                                     <div class="text-sm text-gray-900">
-                                        <?php echo $harian['keterangan_izin']; ?>
+                                        <?php echo $harian->keterangan_izin; ?>
                                     </div>
                                 </td>
                             </tr>

@@ -94,13 +94,14 @@ public function get_foto_by_id($id)
     return $query->result_array();
     }
 
-    public function getHarian($date)
+    public function getHarian($tanggal)
     {
-        $query = $this->db->select('date, kegiatan, jam_masuk, jam_pulang, keterangan_izin, status')
-        ->from('absensi')
-        ->where('date', date('Y-m-d'))
-        ->get();
-    return $query->result_array();
+        $this->db->select('absensi.*, admin.username');
+        $this->db->from('absensi');
+        $this->db->join('admin', 'absensi.id_karyawan = admin.id', 'left');
+        $this->db->where('date', $tanggal);
+        $query = $this->db->get();
+        return $query->result();
     }
 
 public function getAbsensiLast7Days() {
