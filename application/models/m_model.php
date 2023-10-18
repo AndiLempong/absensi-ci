@@ -28,6 +28,22 @@ class M_model extends CI_Model{
         return $this->db->insert_id();
     }
 
+// m_model profil
+public function get_foto_by_id($id)
+{
+    $this->db->select('image');
+    $this->db->from('admin');
+    $this->db->where('id', $id);
+    $query = $this->db->get();
+
+    if ($query->num_rows() > 0) {
+        $result = $query->row();
+        return $result->f;
+    } else {
+        return false;
+    }
+}
+
 //m_model admin
     public function register($data) {
         $this->db->insert('admin', $data);
@@ -66,7 +82,7 @@ class M_model extends CI_Model{
         $this->db->limit(1);
         return $this->db->get()->row();
     }
-
+    
     // mengambil data date dari 
     public function getDataBulanan($date)
     {

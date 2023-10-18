@@ -46,7 +46,7 @@ function tampil_id_karyawan($id)
     $ci->load->database();
     $result = $ci->db->where('id', $id)->get('karyawan');
     foreach ($result->result() as $c) {
-        $stmt= $c->nama_mapel;
+        $stmt= $c->id_karyawan;
         return $stmt;
     }
 }

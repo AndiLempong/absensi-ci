@@ -116,6 +116,7 @@
                                 <th class="px-5 py-3 text-xs text-gray-500">JAM MASUK</th>
                                 <th class="px-5 py-3 text-xs text-gray-500">JAM PULANG</th>
                                 <th class="px-5 py-3 text-xs text-gray-500">KETERANGAN IZIN</th>
+                                <th class="px-5 py-3 text-xs text-gray-500">AKSI</th>
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-300">
@@ -147,6 +148,28 @@
                                         <?php echo $row->keterangan_izin; ?>
                                     </div>
                                 </td>
+
+                                <!-- Fungsi Hapus -->
+                                <td>
+                                <div class="d-flex-content">
+                                        <button onclick="hapus(<?php echo $row->id ?>)"
+                                            class="btn btn-lg btn-danger">
+                                            <i class="fa-solid fa-trash-can"></i></button>
+                                </div>
+                                    <?php
+                      if($row->status == 'done') {
+                        echo '<div>
+                        <button disabled class="btn btn-lg btn-dark"> <i
+                        class="fa-solid fa-person-walking"></i></button>
+                       </div>';
+                      } else {
+                        echo '<div>
+                        <button id="pulang" onclick="pulang('. $row->id .')" class="btn btn-lg btn-warning"> <i
+                        class="fa-solid fa-person-walking"></i></button>
+                       </div>';
+                      }
+                      ?>
+                                </td>
                             </tr>
                             <?php endforeach?>
                         </tbody>
@@ -169,29 +192,55 @@
     </script>
      <script>
         function hapus(id) {
-            swal.fire({
-                title: 'Apakah yakin menghapus data',
-                text: "Data akan hilang permanen",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                cancelButtonText: 'Batal',
-                confirmButtonText: 'Ya Hapus'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Berhasil Dihapus',
-                        showConfirmButton: false,
-                        timer: 1500,
+    swal.fire({
+        title: 'Yakin untuk menghapus data ini?',
+        text: "Data ini akan terhapus permanen",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Batal',
+        confirmButtonText: 'Ya Hapus'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil Dihapus',
+                showConfirmButton: false,
+                timer: 1500,
 
-                    }).then(function() {
-                        window.location.href = "<?php echo base_url('karyawan/hapus_history/')?>" + id;
-                    });
-                }
+            }).then(function() {
+                window.location.href = "<?php echo base_url('karyawan/hapus_karyawan/')?>" + id;
             });
         }
+    });
+}
+
+
+function pulang(id) {
+    swal.fire({
+        title: 'Ingin Pulang',
+        text: "Hati Hati DI Jalan",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Batal',
+        confirmButtonText: 'Ya Pulang'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Selamat Jalan',
+                showConfirmButton: false,
+                timer: 1500,
+
+            }).then(function() {
+                window.location.href = "<?php echo base_url('karyawan/pulang/')?>" + id;
+            });
+        }
+    });
+}
         </script>
 </body>
 </html>

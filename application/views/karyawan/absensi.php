@@ -99,7 +99,7 @@
 <form action="<?php echo base_url('karyawan/aksi_absensi')?>" method="post">
     <section>
     <p class="text-gray-900 text-5xl dark:text-white">Absensi</p>
-    <div class="overview shadow-lg p-4 mb-3 bg-body rounded">
+    <div class="overview shadow-lg p-5 mb-3 bg-body rounded">
       <div>
         <textarea name="kegiatan" id="kegiatan" placeholder="Kegiatan ???" required></textarea>
       </div>

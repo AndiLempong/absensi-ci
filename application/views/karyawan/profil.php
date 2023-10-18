@@ -50,67 +50,87 @@
 <body>
         </header>
         <br>
-        <div class="card m-auto p-5">
+        <!-- <div class="card m-auto p-5"> -->
 
 <br>
 
 <div>
   <?php $this->session->flashdata('message') ?></div>
 <div class="row d-flex">
-        <button class="border border-0 btn btn-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            <?php if (!empty($row->foto)): ?>
-            <img class="rounded-circle" height="150" width="150" src="<?php echo base64_decode($row->foto);?>">
-            <?php else: ?>
-              <center>
-            <img class="rounded-circle" height="150" width="150"
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png" />
-                </center>
-            <?php endif;?>
-        </button>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
-                    </div>
-                    <div class="container w-75 m p-3">
-                        <form method="post" action="<?php echo base_url('karyawan/upload_image'); ?>"
-                            enctype="multipart/form-data" class="row">
-                            <div class="mb-3 col-12">
-                                <label for="nama" class="form-label">Foto:</label>
-                                <input type="hidden" class="form-control" id="id" name="id"
-                                    value="<?php echo $this->session->userdata('id'); ?>">
-                                <input type="hidden" name="base64_image" id="base64_image">
-                                <input class="form-control" type="file" name="userfile" id="userfile"
-                                    accept="image/*">
-                            </div>
-                            <div class="modal-footer">
-                                <a class="btn btn-danger" href="<?php echo base_url('karyawan/upload_image'); ?>">Ganti
-                                    Foto</a>
-                            </div>
-                        </form>
-                    </div>
+<?php $no = 0;
+foreach ($user as $row) : $no++; ?>
+                                <div class="w-100 m-auto p-3">
+                                    <br>
+                                    <div><?php echo $this->session->flashdata('message'); ?></div>
+                                    <div><?php echo $this->session->flashdata('sukses'); ?></div>
+                                    <div class="row d-flex">
+                                        <input name="id" type="hidden" value="<?php echo $row->id ?>">
 
-                </div>
+
+                                        <span class="border border-0 btn btn-link">
+                                            <?php if (!empty($row->image)): ?>
+                                            <img src="<?php echo  base_url('./image/' . $row->image) ?>" height="150"
+                                                width="150" class="rounded-circle">
+
+                                              <?php else: ?>
+                                            <img class="rounded-circle  " height="150" width="150"
+                                                src="https://slabsoft.com/wp-content/uploads/2022/05/pp-wa-kosong-default.jpg" />
+                                            <?php endif;?>
+                                        </span>
+
+                                        <br>
+                                        <br>
+                                        <form method="post"
+                                            action="<?php echo base_url('karyawan/aksi_update_profile'); ?>"
+                                            enctype="multipart/form-data">
+                                            <input name="id" type="hidden" value="<?php echo $row->id; ?>">
+                                            <div class="d-flex flex-row ">
+                                                <div class="p-2 col-6">
+                                                    <label for="" class="form-label fs-5">Nama
+                                                        <br>
+                                                        Depan </label>
+                                                    <input type="text" class="form-control" id="nama_depan"
+                                                        name="nama_depan" placeholder="Nama Depan"
+                                                        value="<?php echo $row->nama_depan; ?>">
+                                                    <label for="" class="form-label fs-5">Username </label>
+                                                    <input type="text" class="form-control" id="username"
+                                                        name="username" placeholder="Username"
+                                                        value="<?php echo $row->username; ?>">
+                                                </div>
+                                                <br>
+                                                <div class="p-2 col-6">
+                                                    <label for="" class="form-label fs-5">Nama
+                                                        <br>
+                                                        Belakang </label>
+                                                    <input type="text" class="form-control" id="nama_belakang"
+                                                        name="nama_belakang" placeholder="Nama Belakang"
+                                                        value="<?php echo $row->nama_belakang; ?>">
+
+
+                                                </div>
+                                            </div>
+                                            <input type="file" name="foto" class="p-3">
+                                    </div>
+                                </div>
+                                <?php endforeach; ?>
+                                <div class="d-flex p-2 row justify-content-evenly ">
+                                    <button type="submit" class="btn btn-dark col-4" name=" submit">Ubah
+                                        Profile</button>
+
+                                    <a class="btn btn-danger col-4"
+                                        href="<?php echo base_url('karyawan/hapus_image'); ?>">
+                                        Hapus
+                                        Foto</a>
+                                </div>
+
+                                <br>
+
+                                </form>
 
             </div>
-    <br>
-    <br>
-    <br>
     <br>
     
-    <form method="post" action="" enctype="multipart/form_data">
-        <input name="id_siswa" type="hidden">
-        <div class="d-flex flex-row ">
-
-            <!-- <div class="p-2 col-6">
-                <label for="" class="form-label fs-5 ">Email </label>
-                <input type="text" class="form-control" id="email" name="email" placeholder="Email">
-            </div>
-            <div class="p-2 col-6">
-                <label for="" class="form-label fs-5">Username </label>
-                <input type="text" class="form-control" id="username" name="username" placeholder="Username">
-            </div>
-        </div>
-        <br>
-        <br>
+    <form method="post" action="<?php echo base_url('karyawan/aksi_ubah_pw')?>" enctype="multipart/form_data">
         <div class="d-flex flex-row ">
             <div class="p-2 col-6 >
             <label for=" nama="" class="form-label fs-5">Password Baru </label>
@@ -123,53 +143,13 @@
                     placeholder="Konfirmasi Paswword" value=>
             </div>
         </div>
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Foto Profile</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
-                    </div>
-                    <div class="container w-75 m p-3">
-                        <form method="post" action=""
-                            enctype="multipart/form-data" class="row">
-                            <div class="mb-3 col-12">
-                                <label for="nama" class="form-label">Foto:</label>
-                                <input type="hidden" class="form-control" id="id" name="id"
-                                    value="<?php echo $this->session->userdata('id'); ?>">
-                                <input type="hidden" name="base64_image" id="base64_image">
-                                <input class="form-control" type="file" name="userfile" id="userfile"
-                                    accept="image/*">
-                            </div>
-                            <div class="col-12 text-end">
-                                <input type="submit" class="btn btn-sm btn-primary px-3" name="submit"
-                                    value="Ubah Foto"></input>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <a class="btn btn-danger" href="">Hapus
-                            Foto</a>
-                    </div>
-                </div>
             </div>
-        </div> -->
-        <div class="flex justify-content-between">
-            <!-- <div>
-                <a href="<?php echo base_url('karyawan/dashboard'); ?>"
-                    class=" flex items-center p-2 m-10 w-auto bg-red-500 hover:bg-red-700 text-white font-bold py-2  rounded w-7/6">
-                    <span>Kembali</span>
-                </a>
-            </div> -->
-            
-                    <!-- <div class="modal-footer">
-                        <a class="btn btn-danger" href="<?php echo base_url('karyawan/hapus_image'); ?>">Hapus
-                            Foto</a>
-                    </div> -->
-            </div>
+            <div class="d-flex p-2 row justify-content-evenly ">
+                                        <button type="submit" class="btn btn-sm btn-dark col-5" name=" submit">Ubah
+                                            Password</button>
+    </form>
 
+<!-- page dashboard -->
             <aside id="default-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
    <div class="h-full px-3 py-4 overflow-y-auto bg-blue-50 dark:bg-blue-800">
       <ul class="space-y-2 font-medium">

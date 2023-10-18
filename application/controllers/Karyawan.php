@@ -11,6 +11,8 @@ class Karyawan extends CI_Controller {
 	public function dashboard()
 	{
 		$data['absensi'] = $this->m_model->get_data('absensi')->result();
+		$data['admin'] = $this->m_model->get_data('admin')->num_rows();
+		$data['data'] = $this->m_model->get_data('absensi')->num_rows();
 		$this->load->view('karyawan/dashboard', $data);
 	}
 
@@ -110,36 +112,142 @@ class Karyawan extends CI_Controller {
 
 	public function profil()
 	{
-		$this->load->view('karyawan/profil');
+		$data['user'] = $this->m_model->get_by_id('admin', 'id', $this->session->userdata('id'))->result();
+		$this->load->view('karyawan/profil', $data);
 	}
 
-	   public function upload_image()
-   	{  
-	   $base64_image = $this->input->post('base64_image');
-	   $binary_image = base64_encode($base64_image);
-	   $data = array(
-		   'images' => $binary_image
-	   );
-	   $eksekusi = $this->m_model->ubah_data('karyawan', $data, array('id'=>$this->session->userdata('id')));
-	   if($eksekusi) {
-		   $this->session->set_flashdata('sukses' , 'berhasil');
-		   redirect(base_url('karyawan/profil'));
-	   } else {
-		   $this->session->set_flashdata('error' , 'gagal...');
-		  echo "Tidak Berhasil Mengganti";
-	   }
-   	}
+	// public function upload_img($value)
+	// {
+	// 	$kode = round(microtime(true) * 1000);
+	// 	$config['upload_path'] = '../../image/';
+	// 	$config['allowed_types'] = 'jpg|png|jpeg';
+	// 	$config['max_size'] = '30000';
+	// 	$config['file_name'] = $kode;
+		
+	// 	$this->load->library('upload', $config); // Load library 'upload' with config
+		
+	// 	if (!$this->upload->do_upload($value)) {
+	// 		return array(false, '');
+	// 	} else {
+	// 		$fn = $this->upload->data();
+	// 		$nama = $fn['file_name'];
+	// 		return array(true, $nama);
+	// 	}
+	// }
+	public function aksi_update_profile()
+	{
+		$foto = $_FILES['foto']['name'];
+		$foto_temp = $_FILES['foto']['tmp_name'];
+		$username = $this->input->post('username');
+		$nama_depan = $this->input->post('nama_depan');
+		$nama_belakang = $this->input->post('nama_belakang');
+		// $foto = $this->upload_img('foto');
+		// Jika ada foto yang diunggah
+		if ($foto) {
+			$kode = round(microtime(true) * 900);
+			$file_name = $kode . '_' . $foto;
+			$upload_path = './image/' . $file_name;
+	
+			if (move_uploaded_file($foto_temp, $upload_path)) {
+				// Hapus foto lama jika ada
+				$old_file = $this->m_model->get_foto_by_id($this->input->post('id'));
+				if ($old_file && file_exists('./image/' . $old_file)) {
+					unlink(' ./image/' . $old_file);
+				}
+	
+				$data = [
+					'image' => $file_name,
+					'username' => $username,
+					'nama_depan' => $nama_depan,
+					'nama_belakang' => $nama_belakang,
+				];
+			} else {
+				// Gagal mengunggah foto baru
+				redirect(base_url('karyawan/dashboard'));
+			}
+		} else {
+			// Jika tidak ada foto yang diunggah
+			$data = [
+				'username' => $username,
+				'nama_depan' => $nama_depan,
+				'nama_belakang' => $nama_belakang,
+			];
+		}
+	
+		// Eksekusi dengan model ubah_data
+		$update_result = $this->m_model->ubah_data('admin', $data, array('id' => $this->session->userdata('id')));
+	
+		if ($update_result) {
+			$this->session->set_flashdata('sukses','<div class="alert alert-success alert-dismissible fade show" role="alert">
+		 Berhasil Merubah Profile
+				   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			   </div>');
+			redirect(base_url('karyawan/profil'));
+		} else {
+			redirect(base_url('karyawan/dashboard'));
+		}
+	}
+	public function hapus_image()
+	{ 
+    $data = array(
+        'image' => NULL
+    );
 
+    $eksekusi = $this->m_model->ubah_data('admin', $data, array('id'=>$this->session->userdata('id')));
+    if($eksekusi) {
+        $this->session->set_flashdata('sukses' , 'berhasil');
+        redirect(base_url('karyawan/profil'));
+    } else {
+        $this->session->set_flashdata('error' , 'gagal...');
+        redirect(base_url('karyawan/dashboard'));
+    }
+	}
+
+	public function aksi_ubah_pw()
+    {
+    
+        $password_baru = $this->input->post('password_baru');
+        $konfirmasi_password = $this->input->post('konfirmasi_password');
+        
+     
+       
+               if (!empty($password_baru) && strlen($password_baru) >= 8) {
+                   
+                       $data['password'] = md5($password_baru);
+                   
+              
+               $this->session->set_userdata($data);
+
+               $update_result = $this->m_model->ubah_data('admin', $data, array('id' => $this->session->userdata('id')));
+               $this->session->set_flashdata('sukses','<div class="alert alert-success alert-dismissible fade show" role="alert">
+               Berhasil Merubah Password
+                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                     </div>');
+               redirect(base_url('karyawan/profil'));
+             } else {
+                $this->session->set_flashdata('message','<div class="alert alert-danger alert-dismissible fade show" role="alert">
+           Password anda kurang dari 8
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>');
+                  redirect(base_url('karyawan/profil'));
+              }
+     
+   
+           
+    }
+
+
+// history
 	public function history()
 	{
 		$data['absensi'] = $this->m_model->get_data('absensi')->result();
 		$this->load->view('karyawan/history', $data);
 	}
-
-	public function hapus_history($id)
+// hapus history
+	public function hapus_karyawan($id)
 	{
-	   $this->m_model->delete('absensi', 'id', $id);
-	   redirect(base_url('karyawan/history'));
+    $this->m_model->delete('absensi', 'id', $id);
+    redirect(base_url('karyawan/history'));
 	}
 
 	public function pulang($id)
@@ -147,7 +255,7 @@ class Karyawan extends CI_Controller {
     date_default_timezone_set('Asia/Jakarta');
     $waktu_sekarang = date('Y-m-d H:i:s');
     $data = [
-        'jam_keluar' => $waktu_sekarang,
+        'jam_pulang' => $waktu_sekarang,
         'status' => 'done'
     ];
     $this->m_model->ubah_data('absensi', $data, array('id'=> $id));

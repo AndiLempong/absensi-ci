@@ -13,9 +13,17 @@ class Admin extends CI_Controller {
 		$this->load->helper('my_helper');;
 		$this->load->library('upload');
         if ($this->session->userdata('logged_in')!= true && $this->session->userdata('role') != 'index') {
-            redirect(base_url().'auth');
+            redirect(base_url().'absensi/login');
         }
 	}
+
+	// Dashboard Admin
+	public function dashboard_a()
+	{
+		$data['rekap_semua'] = $this->m_model->get_data('absensi')->result();
+		$this->load->view('admin/dashboard_a', $data);
+	}
+
 
 		// Rekap
 		public function rekap_harian()
