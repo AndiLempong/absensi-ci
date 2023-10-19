@@ -48,7 +48,7 @@
 </head>
 
 <body>
-    <div class="card m-auto p-5">
+    <!-- <div class="card m-auto p-5"> -->
 <br>
 
 <div>
@@ -64,8 +64,8 @@ foreach ($user as $row) : $no++; ?>
 
 
                                         <span class="border border-0 btn btn-link">
-                                            <?php if (!empty($row->foto)): ?>
-                                            <img src="<?php echo  base_url('./image/' . $row->foto) ?>" height="150"
+                                            <?php if (!empty($row->image)): ?>
+                                            <img src="<?php echo  base_url('./image/' . $row->image) ?>" height="150"
                                                 width="150" class="rounded-circle">
 
                                             <?php else: ?>
@@ -127,7 +127,7 @@ foreach ($user as $row) : $no++; ?>
 
             </div>
     <br>
-    
+    <!-- pw -->
     <form method="post" action="<?php echo base_url('karyawan/aksi_ubah_pw')?>" enctype="multipart/form_data">
         <div class="d-flex flex-row ">
             <div class="p-2 col-6 >
