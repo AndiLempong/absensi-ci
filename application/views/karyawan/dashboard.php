@@ -163,31 +163,6 @@
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <p class="text-uppercase small mb-1">
-                                <strong>data keseluruhan</strong>
-                                <hr><hr><hr><hr>
-                            </p>
-                            <h5 class="mb-0">
-
-                                <small class="text-danger ms-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                        height="3em" viewBox="0 0 448 512">
-                                        <path
-                                            d="M96 0C43 0 0 43 0 96V416c0 53 43 96 96 96H384h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V384c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H384 96zm0 384H352v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16zm16 48H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z" />
-                                    </svg>
-                                </small>
-                            </h5>
-                            <p class="text-uppercase text-muted small mb-1">
-                            </p>
-                            <h5 class="text-muted mb-0"> <a href=""
-                                    class=" fs-5 btn btn-sm text-dark">Data
-                                    Lengkap</a></h5>
-                        </div>
-                    </div>
-                </div>
             </div>
             </div>
         </section>

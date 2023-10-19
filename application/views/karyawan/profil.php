@@ -48,14 +48,10 @@
 </head>
 
 <body>
-        </header>
-        <br>
-        <!-- <div class="card m-auto p-5"> -->
-
+    <div class="card m-auto p-5">
 <br>
 
 <div>
-  <?php $this->session->flashdata('message') ?></div>
 <div class="row d-flex">
 <?php $no = 0;
 foreach ($user as $row) : $no++; ?>
@@ -68,12 +64,12 @@ foreach ($user as $row) : $no++; ?>
 
 
                                         <span class="border border-0 btn btn-link">
-                                            <?php if (!empty($row->image)): ?>
-                                            <img src="<?php echo  base_url('./image/' . $row->image) ?>" height="150"
+                                            <?php if (!empty($row->foto)): ?>
+                                            <img src="<?php echo  base_url('./image/' . $row->foto) ?>" height="150"
                                                 width="150" class="rounded-circle">
 
-                                              <?php else: ?>
-                                            <img class="rounded-circle  " height="150" width="150"
+                                            <?php else: ?>
+                                            <img class="rounded-circle " height="150" width="150"
                                                 src="https://slabsoft.com/wp-content/uploads/2022/05/pp-wa-kosong-default.jpg" />
                                             <?php endif;?>
                                         </span>
@@ -106,18 +102,20 @@ foreach ($user as $row) : $no++; ?>
                                                         name="nama_belakang" placeholder="Nama Belakang"
                                                         value="<?php echo $row->nama_belakang; ?>">
 
-
                                                 </div>
                                             </div>
                                             <input type="file" name="foto" class="p-3">
                                     </div>
                                 </div>
                                 <?php endforeach; ?>
+
+
+
                                 <div class="d-flex p-2 row justify-content-evenly ">
-                                    <button type="submit" class="btn btn-dark col-4" name=" submit">Ubah
+                                    <button type="submit" class="btn btn-sm btn-dark col-5" name=" submit">Ubah
                                         Profile</button>
 
-                                    <a class="btn btn-danger col-4"
+                                    <a class="btn btn-danger col-5"
                                         href="<?php echo base_url('karyawan/hapus_image'); ?>">
                                         Hapus
                                         Foto</a>
@@ -145,11 +143,11 @@ foreach ($user as $row) : $no++; ?>
         </div>
             </div>
             <div class="d-flex p-2 row justify-content-evenly ">
-                                        <button type="submit" class="btn btn-sm btn-dark col-5" name=" submit">Ubah
-                                            Password</button>
+                <button type="submit" class="btn btn-sm btn-dark col-5" name=" submit">Ubah
+                    Password</button>
     </form>
 
-<!-- page dashboard -->
+<!-- page sidebar -->
             <aside id="default-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
    <div class="h-full px-3 py-4 overflow-y-auto bg-blue-50 dark:bg-blue-800">
       <ul class="space-y-2 font-medium">

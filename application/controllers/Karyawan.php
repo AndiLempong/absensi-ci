@@ -6,7 +6,10 @@ class Karyawan extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('m_model');
+		
 	}
+
+	
 
 	public function dashboard()
 	{
@@ -116,24 +119,24 @@ class Karyawan extends CI_Controller {
 		$this->load->view('karyawan/profil', $data);
 	}
 
-	// public function upload_img($value)
-	// {
-	// 	$kode = round(microtime(true) * 1000);
-	// 	$config['upload_path'] = '../../image/';
-	// 	$config['allowed_types'] = 'jpg|png|jpeg';
-	// 	$config['max_size'] = '30000';
-	// 	$config['file_name'] = $kode;
+	public function upload_img($value)
+	{
+		$kode = round(microtime(true) * 1000);
+		$config['upload_path'] = '../../image/';
+		$config['allowed_types'] = 'jpg|png|jpeg';
+		$config['max_size'] = '30000';
+		$config['file_name'] = $kode;
 		
-	// 	$this->load->library('upload', $config); // Load library 'upload' with config
+		$this->load->library('upload', $config); // Load library 'upload' with config
 		
-	// 	if (!$this->upload->do_upload($value)) {
-	// 		return array(false, '');
-	// 	} else {
-	// 		$fn = $this->upload->data();
-	// 		$nama = $fn['file_name'];
-	// 		return array(true, $nama);
-	// 	}
-	// }
+		if (!$this->upload->do_upload($value)) {
+			return array(false, '');
+		} else {
+			$fn = $this->upload->data();
+			$nama = $fn['file_name'];
+			return array(true, $nama);
+		}
+	}
 	public function aksi_update_profile()
 	{
 		$foto = $_FILES['foto']['name'];
@@ -202,6 +205,8 @@ class Karyawan extends CI_Controller {
         redirect(base_url('karyawan/dashboard'));
     }
 	}
+
+	
 
 	public function aksi_ubah_pw()
     {
