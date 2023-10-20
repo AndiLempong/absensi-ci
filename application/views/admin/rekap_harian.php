@@ -87,7 +87,7 @@
     <div class="relative min-h-screen md:flex" data-dev-hint="container">
         <main id="content" class="max-h-screen overflow-y-auto flex-1 p-6 lg:px-8">
             <div class="container mx-auto">
-                <form action="<?php echo base_url('admin/export_harian')?>" method = "post">
+                <form action="<?php echo base_url('admin/export_harian')?>" method = "get">
                 <input type="date" name="tanggal">
                                     <button class="btn btn-light" type="submit" name="submit">Export</button>
 

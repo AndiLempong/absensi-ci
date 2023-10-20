@@ -221,7 +221,7 @@
 function pulang(id) {
     swal.fire({
         title: 'Ingin Pulang',
-        text: "Utamakan Keselamatan Orang Tua Menunggumu",
+        text: "Utamakan Keselamatan",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',

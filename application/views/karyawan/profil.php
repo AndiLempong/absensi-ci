@@ -47,51 +47,49 @@
 </script>
 </head>
 
-<body>
+<body >
     <!-- <div class="card m-auto p-5"> -->
 <br>
 
 <div>
 <div class="row d-flex">
-<?php $no = 0;
-foreach ($user as $row) : $no++; ?>
-                                <div class="w-100 m-auto p-3">
-                                    <br>
-                                    <div><?php echo $this->session->flashdata('message'); ?></div>
-                                    <div><?php echo $this->session->flashdata('sukses'); ?></div>
-                                    <div class="row d-flex">
-                                        <input name="id" type="hidden" value="<?php echo $row->id ?>">
+    <div class="w-100 m-auto p-3">
+        <br>
+        <div><?php echo $this->session->flashdata('message'); ?></div>
+        <div><?php echo $this->session->flashdata('sukses'); ?></div>
+        <div class="row d-flex">
+            <input name="id" type="hidden" value="<?php echo $this->session->userdata('id'); ?>">
 
-
-                                        <span class="border border-0 btn btn-link">
-                                            <?php if (!empty($row->image)): ?>
-                                            <img src="<?php echo  base_url('./image/' . $row->image) ?>" height="150"
-                                                width="150" class="rounded-circle">
-
-                                            <?php else: ?>
-                                            <img class="rounded-circle " height="150" width="150"
-                                                src="https://slabsoft.com/wp-content/uploads/2022/05/pp-wa-kosong-default.jpg" />
-                                            <?php endif;?>
-                                        </span>
-
-                                        <br>
-                                        <br>
-                                        <form method="post"
-                                            action="<?php echo base_url('karyawan/aksi_update_profile'); ?>"
-                                            enctype="multipart/form-data">
-                                            <input name="id" type="hidden" value="<?php echo $row->id; ?>">
-                                            <div class="d-flex flex-row ">
+            
+            <span class="border border-0 btn btn-link">
+                <?php if (empty($this->session->userdata('id'))): ?>
+                    <img src="" height="150"
+                    width="150" class="rounded-circle">
+                    
+                    <?php else: ?>
+                        <img class="rounded-circle " height="150" width="150"
+                        src="https://slabsoft.com/wp-content/uploads/2022/05/pp-wa-kosong-default.jpg" />
+                        <?php endif;?>
+                    </span>
+                    
+                    <br>
+                    <br>
+                    <form method="post"
+                    action="<?php echo base_url('karyawan/aksi_update_profile'); ?>"
+                    enctype="multipart/form-data">
+                    <input name="id" type="hidden" value="<?php echo $this->session->userdata('id'); ?>">
+                    <div class="d-flex flex-row ">
                                                 <div class="p-2 col-6">
                                                     <label for="" class="form-label fs-5">Nama
                                                         <br>
                                                         Depan </label>
                                                     <input type="text" class="form-control" id="nama_depan"
                                                         name="nama_depan" placeholder="Nama Depan"
-                                                        value="<?php echo $row->nama_depan; ?>">
+                                                        value="<?php echo $this->session->userdata('nama_depan'); ?>">
                                                     <label for="" class="form-label fs-5">Username </label>
                                                     <input type="text" class="form-control" id="username"
                                                         name="username" placeholder="Username"
-                                                        value="<?php echo $row->username; ?>">
+                                                        value="<?php echo $this->session->userdata('username') ?>">
                                                 </div>
                                                 <br>
                                                 <div class="p-2 col-6">
@@ -100,14 +98,13 @@ foreach ($user as $row) : $no++; ?>
                                                         Belakang </label>
                                                     <input type="text" class="form-control" id="nama_belakang"
                                                         name="nama_belakang" placeholder="Nama Belakang"
-                                                        value="<?php echo $row->nama_belakang; ?>">
+                                                        value="<?php echo $this->session->userdata('nama_belakang') ?>">
 
                                                 </div>
                                             </div>
                                             <input type="file" name="foto" class="p-3">
                                     </div>
                                 </div>
-                                <?php endforeach; ?>
 
 
 
@@ -115,10 +112,7 @@ foreach ($user as $row) : $no++; ?>
                                     <button type="submit" class="btn btn-sm btn-dark col-5" name=" submit">Ubah
                                         Profile</button>
 
-                                    <a class="btn btn-danger col-5"
-                                        href="<?php echo base_url('karyawan/hapus_image'); ?>">
-                                        Hapus
-                                        Foto</a>
+                                    <a class="btn btn-danger col-5" href="<?php echo base_url('karyawan/hapus_image'); ?>">Hapus Foto</a>
                                 </div>
 
                                 <br>
