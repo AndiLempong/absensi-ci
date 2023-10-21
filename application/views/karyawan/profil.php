@@ -83,15 +83,18 @@
                                                     <label for="" class="form-label fs-5">Nama
                                                         <br>
                                                         Depan </label>
+
                                                     <input type="text" class="form-control" id="nama_depan"
                                                         name="nama_depan" placeholder="Nama Depan"
                                                         value="<?php echo $this->session->userdata('nama_depan'); ?>">
+
                                                     <label for="" class="form-label fs-5">Username </label>
                                                     <input type="text" class="form-control" id="username"
                                                         name="username" placeholder="Username"
                                                         value="<?php echo $this->session->userdata('username') ?>">
                                                 </div>
                                                 <br>
+
                                                 <div class="p-2 col-6">
                                                     <label for="" class="form-label fs-5">Nama
                                                         <br>
@@ -102,17 +105,18 @@
 
                                                 </div>
                                             </div>
-                                            <input type="file" name="foto" class="p-3">
+                                            <input type="file" name="image" class="p-3">
                                     </div>
                                 </div>
 
 
 
                                 <div class="d-flex p-2 row justify-content-evenly ">
-                                    <button type="submit" class="btn btn-sm btn-dark col-5" name=" submit">Ubah
-                                        Profile</button>
+                                <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded col-5">
+                                    Ubah Profil
+                                </button>
 
-                                    <a class="btn btn-danger col-5" href="<?php echo base_url('karyawan/hapus_image'); ?>">Hapus Foto</a>
+                                    <a class="btn btn-danger font-bold py-2 col-5" href="<?php echo base_url('karyawan/hapus_image'); ?>">Hapus Foto</a>
                                 </div>
 
                                 <br>
@@ -124,12 +128,17 @@
     <!-- pw -->
     <form method="post" action="<?php echo base_url('karyawan/aksi_ubah_pw')?>" enctype="multipart/form_data">
         <div class="d-flex flex-row ">
-            <div class="p-2 col-6 >
+            <div class="p-2 col-4 >
+            <label for=" nama="" class="form-label fs-5">Password Lama </label>
+                <input type="text" class="form-control" id="password_lama" name="password_lama"
+                    placeholder="Password Lama" value=>
+            </div>
+            <div class="p-2 col-4 >
             <label for=" nama="" class="form-label fs-5">Password Baru </label>
                 <input type="text" class="form-control" id="password_baru" name="password_baru"
                     placeholder="Password Baru" value=>
             </div>
-            <div class="p-2 col-6 >
+            <div class="p-2 col-4 >
             <label for=" nama="" class="form-label fs-5"> Konfirmasi password</label>
                 <input type="text" class="form-control" id="password_konfirmasi" name="password_konfirmasi"
                     placeholder="Konfirmasi Paswword" value=>
@@ -137,8 +146,9 @@
         </div>
             </div>
             <div class="d-flex p-2 row justify-content-evenly ">
-                <button type="submit" class="btn btn-sm btn-dark col-5" name=" submit">Ubah
-                    Password</button>
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Ubah Password
+            </button>
     </form>
 
 <!-- page sidebar -->

@@ -139,19 +139,19 @@ class Karyawan extends CI_Controller {
 	}
 	public function aksi_update_profile()
 	{
-		$foto = $_FILES['foto']['name'];
-		$foto_temp = $_FILES['foto']['tmp_name'];
+		$image = $_FILES['image']['name'];
+		$image_temp = $_FILES['image']['tmp_name'];
 		$username = $this->input->post('username');
 		$nama_depan = $this->input->post('nama_depan');
 		$nama_belakang = $this->input->post('nama_belakang');
-		// $foto = $this->upload_img('foto');
+		$image = $this->upload_img('image');
 		// Jika ada foto yang diunggah
-		if ($foto) {
+		if ($image) {
 			$kode = round(microtime(true) * 900);
-			$file_name = $kode . '_' . $foto;
+			$file_name = $kode . '_' . $image;
 			$upload_path = './image/' . $file_name;
 	
-			if (move_uploaded_file($foto_temp, $upload_path)) {
+			if (move_uploaded_file($image_temp, $upload_path)) {
 				// Hapus foto lama jika ada
 				$old_file = $this->m_model->get_foto_by_id($this->input->post('id'));
 				if ($old_file && file_exists('./image/' . $old_file)) {
@@ -160,6 +160,7 @@ class Karyawan extends CI_Controller {
 	
 				$data = [
 					'image' => $file_name,
+					// 'email' => $email,
 					'username' => $username,
 					'nama_depan' => $nama_depan,
 					'nama_belakang' => $nama_belakang,
@@ -171,6 +172,7 @@ class Karyawan extends CI_Controller {
 		} else {
 			// Jika tidak ada foto yang diunggah
 			$data = [
+				// 'email' => $email,
 				'username' => $username,
 				'nama_depan' => $nama_depan,
 				'nama_belakang' => $nama_belakang,
@@ -231,7 +233,7 @@ class Karyawan extends CI_Controller {
                redirect(base_url('karyawan/profil'));
              } else {
                 $this->session->set_flashdata('message','<div class="alert alert-danger alert-dismissible fade show" role="alert">
-           Password anda kurang dari 8
+           Password anda kurang dari 8 Angka
                   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
               </div>');
                   redirect(base_url('karyawan/profil'));

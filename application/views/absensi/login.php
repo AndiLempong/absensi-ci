@@ -37,7 +37,7 @@ height: 100%;
       <div class="col-md-9 col-lg-6 col-xl-5">
         <img src="https://img.freepik.com/free-vector/privacy-policy-concept-illustration_114360-7853.jpg?w=740&t=st=1697187687~exp=1697188287~hmac=2ba5c1d4c49bc3f7596c7ea052d5cb3fd0baeff6f5005c791ec7a78b898c7f68" class="img-fluid" alt="Sample image">
       </div>
-      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+      <div class="col-md-12 col-lg-8 col-xl-2 offset-xl-1">
         <form action="<?php echo base_url('Auth/aksi_login') ?>" method="post">
           <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
           </div>
