@@ -89,7 +89,7 @@
             <div class="container mx-auto">
                 <form action="<?php echo base_url('admin/export_harian')?>" method = "get">
                 <input type="date" name="tanggal">
-                                    <button class="btn btn-light" type="submit" name="submit">Export</button>
+                <button class="btn btn-light" type="submit" name="submit">Export</button>
 
             </form>
                 <div class="grid grid-cols-1 px-2 md:grid-cols-3 rounded-t-lg py-2.5 bg-gray-700 text-white text-xl">

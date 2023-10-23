@@ -91,10 +91,8 @@
                     <div class="flex justify-center mb-2 md:justify-start md:pl-6">
                         REKAP BULANAN
                     </div>
-
                     <a href="<?php echo base_url('admin/export_bulan')?>"class="btn btn-secondary">Export <i class="fa-solid fa-file-arrow-down"></i> </a>
-                    
-
+    <!-- </div> -->
                     <form action="<?php echo base_url('admin/rekap_bulanan')?>" method="post">
                     <select name="bulan" class="form-select" aria-label="Default select example">
                                  <option selected>Bulan</option>

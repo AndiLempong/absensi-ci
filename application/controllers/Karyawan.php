@@ -139,27 +139,27 @@ class Karyawan extends CI_Controller {
 	}
 	public function aksi_update_profile()
 	{
-		$image = $_FILES['image']['name'];
-		$image_temp = $_FILES['image']['tmp_name'];
+		$foto = $_FILES['foto']['name'];
+		$foto_temp = $_FILES['foto']['tmp_name'];
 		$username = $this->input->post('username');
 		$nama_depan = $this->input->post('nama_depan');
 		$nama_belakang = $this->input->post('nama_belakang');
-		$image = $this->upload_img('image');
+		$foto = $this->upload_img('foto');
 		// Jika ada foto yang diunggah
-		if ($image) {
+		if ($foto) {
 			$kode = round(microtime(true) * 900);
-			$file_name = $kode . '_' . $image;
-			$upload_path = './image/' . $file_name;
+			$file_name = $kode . '_' . $foto;
+			$upload_path = './foto/' . $file_name;
 	
-			if (move_uploaded_file($image_temp, $upload_path)) {
+			if (move_uploaded_file($foto_temp, $upload_path)) {
 				// Hapus foto lama jika ada
 				$old_file = $this->m_model->get_foto_by_id($this->input->post('id'));
-				if ($old_file && file_exists('./image/' . $old_file)) {
-					unlink(' ./image/' . $old_file);
+				if ($old_file && file_exists('./foto/' . $old_file)) {
+					unlink(' ./foto/' . $old_file);
 				}
 	
 				$data = [
-					'image' => $file_name,
+					'foto' => $file_name,
 					// 'email' => $email,
 					'username' => $username,
 					'nama_depan' => $nama_depan,

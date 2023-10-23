@@ -9,6 +9,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <script src="script.js"></script>
 
 </head>
 <style>
@@ -27,40 +28,33 @@ height: calc(100% - 73px);
 height: 100%;
 }
 }
+
 </style>
 
 <body>
-<section class="vh-100">
-<div class="animated-image"></div>
+<section class="vh-50">
   <div class="container-fluid h-custom">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-md-9 col-lg-6 col-xl-5">
         <img src="https://img.freepik.com/free-vector/privacy-policy-concept-illustration_114360-7853.jpg?w=740&t=st=1697187687~exp=1697188287~hmac=2ba5c1d4c49bc3f7596c7ea052d5cb3fd0baeff6f5005c791ec7a78b898c7f68" class="img-fluid" alt="Sample image">
       </div>
-      <div class="col-md-12 col-lg-8 col-xl-2 offset-xl-1">
+      <div class="mx-auto p-2" style="width: 200px;">
         <form action="<?php echo base_url('Auth/aksi_login') ?>" method="post">
           <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
           </div>
 
           <!-- Inputan Email -->
-          <div class="form-outline mb-3 ">
+          <div class="form-outline mb-2 ">
               <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-              <input type="text" name="email" id="form3Example3" placeholder="Masukkan Email" />
+              <input type="Email" name="email" id="form3Example3" placeholder="Masukkan Email" />
           </div>
 
           <!-- Inputan Password -->
-          <div class="form-outline mb-3">
+          <div class="form-outline mb-2">
               <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
-              <input type="text" name="password" id="form3Example4" placeholder="Masukkan Password" />
+              <input type="Password" name="password" id="form3Example4" placeholder="Masukkan Password" />
           </div>
-
-          <div class="d-flex justify-content-between align-items-center">
-            <!-- Checkbox -->
-            <div class="form-check mb-0">
-              <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
-              <label class="form-check-label" for="form2Example3">Remember me</label>
-            </div>
-          </div>
+          
 
           <div class="text-center text-lg-start mt-4 pt-2">
             <button type="submit" class="btn btn-primary">Login</button>
@@ -74,4 +68,5 @@ height: 100%;
   </div>
 </section>
 </body>
+
 </html>

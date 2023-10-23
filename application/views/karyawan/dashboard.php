@@ -101,7 +101,7 @@
 
 <section>
   <div class="container text-center">
-            <div class="row  p-5">
+            <div class="row p-5">
                 <div class="col-lg-4 col-md-6 mb-4 ">
                     <div class="card ">
                         <div class="card-body ">
