@@ -40,7 +40,7 @@
             setTimeout('jam()', 1000);
         }
        
-        function set(e) {
+        function set(e) {.
             e = e < 10 ? '0'+ e : e;
             return e;
         }
@@ -63,7 +63,7 @@
             
             <span class="border border-0 btn btn-link">
                 <?php if (empty($this->session->userdata('id'))): ?>
-                    <img src="" height="150"
+                    <img src="<?php echo base_url('./image/' . $this->session->userdata('image')) ?>" height="150"
                     width="150" class="rounded-circle">
                     
                     <?php else: ?>
