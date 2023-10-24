@@ -97,18 +97,26 @@
       </div>
     </div>
 <form action="<?php echo base_url('karyawan/aksi_absensi')?>" method="post">
-    <section>
-    <p class="text-gray-900 text-5xl dark:text-white">Absensi</p>
-    <div class="overview shadow-lg p-5 mb-3 bg-body rounded">
-      <div>
-        <textarea name="kegiatan" id="kegiatan" placeholder="Kegiatan ???" required></textarea>
-      </div>
-      <br>
-      <button type="submit" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Absen</button>
-        </div>
-    </section>
-    </form>
-</div>
-</div>
+    <div class="relative min-h-screen md:flex" data-dev-hint="container">
+        <main id="content" class="max-h-screen overflow-y-auto flex-1 p-6 lg:px-8">
+            <div class="container mx-auto">
+                <div class="grid grid-cols-1 px-2 md:grid-cols-3 rounded-t-lg py-2.5 bg-gray-700 text-white text-xl">
+                    <div class="flex justify-center mb-2 md:justify-start md:pl-6">
+                        ABSEN
+                    </div>
+                  </div>
+                  <div class="overflow-x-auto w-full px-4 bg-white rounded-b-lg shadow">
+                     </form>
+                     <br>
+                     <div>
+                        <textarea name="kegiatan" id="kegiatan" placeholder="Kegiatan ?" required></textarea>
+                     </div>
+                     <br>
+                     <button type="submit" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">
+                        Absen
+                     </button>
+                  </div>
+               </div>
+            </div>
 </body>
 </html>

@@ -22,7 +22,6 @@ class Admin extends CI_Controller {
 		$this->load->view('admin/dashboard_a', $data);
 	}
 
-
 		// Rekap
 		public function rekap_harian()
 		{
@@ -73,7 +72,7 @@ class Admin extends CI_Controller {
                 $columnIndex = 1;
                 $id_karyawan = '';
                 $kegiatan = '';
-                $tanggal = '';
+                $date = '';
                 $jam_masuk = '';
                 $jam_pulang = '';
                 $keterangan_izin = ''; 
@@ -81,9 +80,9 @@ class Admin extends CI_Controller {
                     if ($cellName == 'kegiatan') {
                        $kegiatan = $cellData;
                     } else if($cellName == 'id_karyawan') {
-                        $nama_karyawan = tampil_id_karyawan($cellData);
+                        $id_karyawan = tampil_id_karyawan($cellData);
                     } elseif ($cellName == 'date') {
-                        $tanggal = $cellData;
+                        $date = $cellData;
                     } elseif ($cellName == 'jam_masuk') {
                         if($cellData == NULL) {
                             $jam_masuk = '-';
@@ -108,9 +107,9 @@ class Admin extends CI_Controller {
                 // Setelah loop, Anda memiliki data yang diperlukan dari setiap kolom
                 // Anda dapat mengisinya ke dalam lembar kerja Excel di sini
                 $sheet->setCellValueByColumnAndRow(1, $rowIndex, $no);
-                $sheet->setCellValueByColumnAndRow(2, $rowIndex, $nama_karyawan);
+                $sheet->setCellValueByColumnAndRow(2, $rowIndex, $id_karyawan);
                 $sheet->setCellValueByColumnAndRow(3, $rowIndex, $kegiatan);
-                $sheet->setCellValueByColumnAndRow(4, $rowIndex, $tanggal);
+                $sheet->setCellValueByColumnAndRow(4, $rowIndex, $date);
                 $sheet->setCellValueByColumnAndRow(5, $rowIndex, $jam_masuk);
                 $sheet->setCellValueByColumnAndRow(6, $rowIndex, $jam_pulang);
                 $sheet->setCellValueByColumnAndRow(7, $rowIndex, $keterangan_izin);
@@ -174,7 +173,7 @@ class Admin extends CI_Controller {
                 $columnIndex = 1;
                 $nama_karyawan = '';
                 $kegiatan = '';
-                $tanggal = '';
+                $date = '';
                 $jam_masuk = '';
                 $jam_pulang = '';
                 $keterangan_izin = ''; 
@@ -182,9 +181,9 @@ class Admin extends CI_Controller {
                     if ($cellName == 'kegiatan') {
                        $kegiatan = $cellData;
                     } else if($cellName == 'id_karyawan') {
-                        $nama_karyawan = tampil_id_karyawan($cellData);
+                        $id_karyawan = tampil_id_karyawan($cellData);
                     } elseif ($cellName == 'date') {
-                        $tanggal = $cellData;
+                        $date = $cellData;
                     } elseif ($cellName == 'jam_masuk') {
                         if($cellData == NULL) {
                             $jam_masuk = '-';
@@ -206,9 +205,9 @@ class Admin extends CI_Controller {
                 // Setelah loop, Anda memiliki data yang diperlukan dari setiap kolom
                 // Anda dapat mengisinya ke dalam lembar kerja Excel di sini
                 $sheet->setCellValueByColumnAndRow(1, $rowIndex, $no);
-                $sheet->setCellValueByColumnAndRow(2, $rowIndex, $nama_karyawan);
+                $sheet->setCellValueByColumnAndRow(2, $rowIndex, $id_karyawan);
                 $sheet->setCellValueByColumnAndRow(3, $rowIndex, $kegiatan);
-                $sheet->setCellValueByColumnAndRow(4, $rowIndex, $tanggal);
+                $sheet->setCellValueByColumnAndRow(4, $rowIndex, $date);
                 $sheet->setCellValueByColumnAndRow(5, $rowIndex, $jam_masuk);
                 $sheet->setCellValueByColumnAndRow(6, $rowIndex, $jam_pulang);
                 $sheet->setCellValueByColumnAndRow(7, $rowIndex, $keterangan_izin);
@@ -255,11 +254,11 @@ class Admin extends CI_Controller {
             // Buat lembar kerja aktif
            $sheet = $spreadsheet->getActiveSheet();
             // Data yang akan diekspor (contoh data)
-            $tanggal = date('Y-m-d'); // Ambil nilai tanggal yang dipilih dari form
-            $data = $this->m_model->getharian($tanggal);
+            $bulan = date('m');; // Ambil nilai bulan yang dipilih dari form
+            $data = $this->m_model->getbulanan($bulan);
             
             // Buat objek Spreadsheet
-            $headers = ['NO' ,'KEGIATAN','TANGGAL','JAM MASUK', 'JAM PULANG' , 'KETERANGAN IZIN'];
+            $headers = ['NO','NAMA KARYAWAN','KEGIATAN','TANGGAL','JAM MASUK', 'JAM PULANG' , 'KETERANGAN IZIN'];
             $rowIndex = 1;
             foreach ($headers as $header) {
                 $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);
@@ -271,17 +270,19 @@ class Admin extends CI_Controller {
             $no = 1;
             foreach ($data as $rowData) {
                 $columnIndex = 1;
-                
+                $nama_karyawan = '';
                 $kegiatan = '';
-                $tanggal = '';
+                $date = '';
                 $jam_masuk = '';
                 $jam_pulang = '';
-                $izin = ''; 
+                $keterangan_izin = ''; 
                 foreach ($rowData as $cellName => $cellData) {
                     if ($cellName == 'kegiatan') {
                        $kegiatan = $cellData;
-					 } elseif ($cellName == 'date') {
-                        $tanggal = $cellData;
+                    } else if($cellName == 'id_karyawan') {
+                        $id_karyawan = tampil_id_karyawan($cellData);
+                    } elseif ($cellName == 'date') {
+                        $date = $cellData;
                     } elseif ($cellName == 'jam_masuk') {
                         if($cellData == NULL) {
                             $jam_masuk = '-';
@@ -295,23 +296,21 @@ class Admin extends CI_Controller {
                             $jam_pulang = $cellData;
                         }
                     } elseif ($cellName == 'keterangan_izin') {
-                        $izin = $cellData;
+                        $keterangan_izin = $cellData;
                     }
-            
-                    // Anda juga dapat menambahkan logika lain jika perlu
-                    
-                    // Contoh: $sheet->setCellValueByColumnAndRow($columnIndex, $rowIndex, $cellData);
+					// Contoh: $sheet->setCellValueByColumnAndRow($columnIndex, $rowIndex, $cellData);
                     $columnIndex++;
                 }
                 // Setelah loop, Anda memiliki data yang diperlukan dari setiap kolom
                 // Anda dapat mengisinya ke dalam lembar kerja Excel di sini
                 $sheet->setCellValueByColumnAndRow(1, $rowIndex, $no);
-                $sheet->setCellValueByColumnAndRow(2, $rowIndex, $kegiatan);
-                $sheet->setCellValueByColumnAndRow(3, $rowIndex, $tanggal);
-				$sheet->setCellValueByColumnAndRow(4, $rowIndex, $jam_masuk);
-                $sheet->setCellValueByColumnAndRow(5, $rowIndex, $jam_pulang);
-                $sheet->setCellValueByColumnAndRow(6, $rowIndex, $izin);
-                 $no++;
+                $sheet->setCellValueByColumnAndRow(2, $rowIndex, $id_karyawan);
+                $sheet->setCellValueByColumnAndRow(3, $rowIndex, $kegiatan);
+                $sheet->setCellValueByColumnAndRow(4, $rowIndex, $date);
+                $sheet->setCellValueByColumnAndRow(5, $rowIndex, $jam_masuk);
+                $sheet->setCellValueByColumnAndRow(6, $rowIndex, $jam_pulang);
+                $sheet->setCellValueByColumnAndRow(7, $rowIndex, $keterangan_izin);
+                $no++;
             
                 $rowIndex++;
             }
@@ -321,18 +320,17 @@ class Admin extends CI_Controller {
             }
             
             // Set style header
-            $headerStyle = [
-                'font' => ['bold' => true],
+            $headerStyle =[
+                'font'=> ['bold' => true],
                 'alignment'=> [
                     'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment ::HORIZONTAL_CENTER,
                     'vertical' => \PhpOffice\PhpSpreadsheet\Style\Alignment ::VERTICAL_CENTER
-                ],
-            ];
+            ]];
             $sheet->getStyle('A1:' . $sheet->getHighestDataColumn() . '1')->applyFromArray($headerStyle);
             
             // Konfigurasi output Excel
             $writer = new Xlsx($spreadsheet);
-            $filename = 'REKAP_HARIAN.xlsx'; // Nama file Excel yang akan dihasilkan
+            $filename = ' REKAP_BULANAN.xlsx'; // Nama file Excel yang akan dihasilkan
             
             // Set header HTTP untuk mengunduh file Excel
             header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
@@ -341,7 +339,8 @@ class Admin extends CI_Controller {
             
             // Outputkan file Excel ke browser
             $writer->save('php://output');
-  }
+            
+        }
 }
 
 ?>

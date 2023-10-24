@@ -108,44 +108,50 @@
                     <table class="my-4 w-full divide-y divide-gray-300 text-center">
                         <thead class="bg-gray-50">
                             <tr>
-                                <th class="px-5 py-3 text-xs text-gray-500">NO</th>
-                                <th class="px-5 py-3 text-xs text-gray-500">
+                                <th class="px-4 py-3 text-xs text-gray-500">NO</th>
+                                <th class="px-4 py-3 text-xs text-gray-500">
                                     KEGIATAN
                                 </th>
-                                <th class="px-5 py-3 text-xs text-gray-500">TANGGAL</th>
-                                <th class="px-5 py-3 text-xs text-gray-500">JAM MASUK</th>
-                                <th class="px-5 py-3 text-xs text-gray-500">JAM PULANG</th>
-                                <th class="px-5 py-3 text-xs text-gray-500">KETERANGAN IZIN</th>
-                                <th class="px-5 py-3 text-xs text-gray-500">AKSI</th>
+                                <th class="px-4 py-3 text-xs text-gray-500">TANGGAL</th>
+                                <th class="px-4 py-3 text-xs text-gray-500">JAM MASUK</th>
+                                <th class="px-4 py-3 text-xs text-gray-500">JAM PULANG</th>
+                                <th class="px-4 py-3 text-xs text-gray-500">KETERANGAN IZIN</th>
+                                <th class="px-4 py-3 text-xs text-gray-500">STATUS</th>
+                                <th class="px-4 py-3 text-xs text-gray-500">AKSI</th>
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-300">
                             <?php $no=0; foreach ($absensi as $row): $no++ ?>
                             <tr class="whitespace-nowrap">
-                                <td class="px-5 py-3 text-sm text-gray-500"><?php echo $no ?></td>
-                                <td class="px-5 py-3">
+                                <td class="px-4 py-2 text-sm text-gray-500"><?php echo $no ?></td>
+                                <td class="px-4 py-2">
                                     <div class="text-sm text-gray-900">
                                         <?php echo $row->kegiatan; ?>
                                     </div>
                                 </td>
-                                <td class="px-5 py-3">
+                                <td class="px-4 py-2">
                                     <div class="text-sm text-gray-900">
                                         <?php echo $row->date; ?>
                                     </div>
                                 </td>
-                                <td class="px-5 py-3">
+                                <td class="px-4 py-2">
                                     <div class="text-sm text-gray-900">
                                         <?php echo $row->jam_masuk; ?>
                                     </div>
                                 </td>
-                                <td class="px-5 py-3">
+                                <td class="px-4 py-2">
                                     <div class="text-sm text-gray-900">
                                         <?php echo $row->jam_pulang; ?>
                                     </div>
                                 </td>
-                                <td class="px-5 py-3">
+                                <td class="px-4 py-2">
                                     <div class="text-sm text-gray-900">
                                         <?php echo $row->keterangan_izin; ?>
+                                    </div>
+                                </td>
+                                <td class="px-4 py-2">
+                                    <div class="text-sm text-gray-900">
+                                        <?php echo $row->status; ?>
                                     </div>
                                 </td>
 

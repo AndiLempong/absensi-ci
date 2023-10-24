@@ -5,12 +5,9 @@ class Karyawan extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model('m_model');
-		
+		$this->load->model('m_model');	
 	}
-
 	
-
 	public function dashboard()
 	{
 		$data['absensi'] = $this->m_model->get_data('absensi')->result();
@@ -122,7 +119,7 @@ class Karyawan extends CI_Controller {
 	public function upload_img($value)
 	{
 		$kode = round(microtime(true) * 1000);
-		$config['upload_path'] = '../../image/';
+		$config['upload_path'] = '../../foto/';
 		$config['allowed_types'] = 'jpg|png|jpeg';
 		$config['max_size'] = '30000';
 		$config['file_name'] = $kode;
@@ -137,6 +134,8 @@ class Karyawan extends CI_Controller {
 			return array(true, $nama);
 		}
 	}
+
+	
 	public function aksi_update_profile()
 	{
 		$foto = $_FILES['foto']['name'];
@@ -148,7 +147,7 @@ class Karyawan extends CI_Controller {
 		// Jika ada foto yang diunggah
 		if ($foto) {
 			$kode = round(microtime(true) * 900);
-			$file_name = $kode . '_' . $foto;
+			$file_name = $kode . './foto/' . $foto;
 			$upload_path = './foto/' . $file_name;
 	
 			if (move_uploaded_file($foto_temp, $upload_path)) {
@@ -160,7 +159,6 @@ class Karyawan extends CI_Controller {
 	
 				$data = [
 					'foto' => $file_name,
-					// 'email' => $email,
 					'username' => $username,
 					'nama_depan' => $nama_depan,
 					'nama_belakang' => $nama_belakang,
@@ -172,7 +170,6 @@ class Karyawan extends CI_Controller {
 		} else {
 			// Jika tidak ada foto yang diunggah
 			$data = [
-				// 'email' => $email,
 				'username' => $username,
 				'nama_depan' => $nama_depan,
 				'nama_belakang' => $nama_belakang,
@@ -195,7 +192,7 @@ class Karyawan extends CI_Controller {
 	public function hapus_image()
 	{ 
     $data = array(
-        'image' => NULL
+        'foto' => NULL
     );
 
     $eksekusi = $this->m_model->ubah_data('admin', $data, array('id'=>$this->session->userdata('id')));
@@ -208,21 +205,15 @@ class Karyawan extends CI_Controller {
     }
 	}
 
-	
-
 	public function aksi_ubah_pw()
     {
-    
+		$password_lama = $this->input->post('password_lama');
         $password_baru = $this->input->post('password_baru');
         $konfirmasi_password = $this->input->post('konfirmasi_password');
         
-     
-       
                if (!empty($password_baru) && strlen($password_baru) >= 8) {
-                   
                        $data['password'] = md5($password_baru);
-                   
-              
+                
                $this->session->set_userdata($data);
 
                $update_result = $this->m_model->ubah_data('admin', $data, array('id' => $this->session->userdata('id')));
@@ -238,9 +229,6 @@ class Karyawan extends CI_Controller {
               </div>');
                   redirect(base_url('karyawan/profil'));
               }
-     
-   
-           
     }
 
 

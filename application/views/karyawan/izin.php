@@ -95,35 +95,26 @@
     </script>
 
     <form action="<?php echo base_url('karyawan/aksi_izin')?>" method="post">
-    <section>
-    <p class="text-gray-900 text-5xl dark:text-white">Izin</p>
-    <div class="overview shadow-lg p-4 mb-3 bg-body rounded">
-      <div>
-        <textarea name="izin" id="izin" placeholder="izin ???" required></textarea>
-      </div>
-      <br>
-      <button type="submit" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Absen</button>
-        </div>
-    </section>
-    </form>
-    <script type="text/javascript">
-      function dropdown() {
-        document.querySelector("#submenu").classList.toggle("hidden");
-        document.querySelector("#arrow").classList.toggle("rotate-0");
-      }
-      dropdown();
-
-      function openSidebar() {
-        document.querySelector(".sidebar").classList.toggle("hidden");
-      }
-    </script>
-    <script>
-         function hapus(id) {
-            var yes = confirm('Benarkah Demikian?');
-            if (yes == true) {
-               window.location.href = "<?php echo base_url('karyawan/hapus_izin')?>" + id;
-            }
-         }
-   </script>
+    <div class="relative min-h-screen md:flex" data-dev-hint="container">
+        <main id="content" class="max-h-screen overflow-y-auto flex-1 p-6 lg:px-8">
+            <div class="container mx-auto">
+                <div class="grid grid-cols-1 px-2 md:grid-cols-3 rounded-t-lg py-2.5 bg-gray-700 text-white text-xl">
+                    <div class="flex justify-center mb-2 md:justify-start md:pl-6">
+                        IZIN
+                    </div>
+                  </div>
+                  <div class="overflow-x-auto w-full px-4 bg-white rounded-b-lg shadow">
+                     </form>
+                     <br>
+                     <div>
+                        <textarea name="izin" id="izin" placeholder="Izin ?" required></textarea>
+                     </div>
+                     <br>
+                     <button type="submit" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">
+                        Izin
+                     </button>
+                  </div>
+               </div>
+            </div>
 </body>
 </html>

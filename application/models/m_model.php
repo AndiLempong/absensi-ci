@@ -44,6 +44,8 @@ public function get_foto_by_id($id)
     }
 }
 
+
+
 //m_model admin
     public function register($data) {
         $this->db->insert('admin', $data);

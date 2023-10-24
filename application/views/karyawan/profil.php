@@ -23,34 +23,11 @@
         /* background-color: #EEEEEE; */
     } 
 </style>
-
-<!-- JAM -->
-<script type="text/javascript">
-        window.onload = function() { jam(); }
-       
-        function jam() {
-            var e = document.getElementById('jam'),
-            d = new Date(), h, m, s;
-            h = d.getHours();
-            m = set(d.getMinutes());
-            s = set(d.getSeconds());
-       
-            e.innerHTML = h +':'+ m +':'+ s;
-       
-            setTimeout('jam()', 1000);
-        }
-       
-        function set(e) {.
-            e = e < 10 ? '0'+ e : e;
-            return e;
-        }
-</script>
 </head>
 
 <body >
     <!-- <div class="card m-auto p-5"> -->
 <br>
-
 <div>
 <div class="row d-flex">
     <div class="w-100 m-auto p-3">
@@ -59,19 +36,15 @@
         <div><?php echo $this->session->flashdata('sukses'); ?></div>
         <div class="row d-flex">
             <input name="id" type="hidden" value="<?php echo $this->session->userdata('id'); ?>">
-
-            
             <span class="border border-0 btn btn-link">
                 <?php if (empty($this->session->userdata('id'))): ?>
-                    <img src="<?php echo base_url('./image/' . $this->session->userdata('image')) ?>" height="150"
+                    <img src="<?php echo base_url('./foto/' . $this->session->userdata('foto')) ?>" height="150"
                     width="150" class="rounded-circle">
-                    
                     <?php else: ?>
                         <img class="rounded-circle " height="150" width="150"
                         src="https://slabsoft.com/wp-content/uploads/2022/05/pp-wa-kosong-default.jpg" />
                         <?php endif;?>
                     </span>
-                    
                     <br>
                     <br>
                     <form method="post"
@@ -83,7 +56,6 @@
                                                     <label for="" class="form-label fs-5">Nama
                                                         <br>
                                                         Depan </label>
-
                                                     <input type="text" class="form-control" id="nama_depan"
                                                         name="nama_depan" placeholder="Nama Depan"
                                                         value="<?php echo $this->session->userdata('nama_depan'); ?>">
@@ -94,7 +66,6 @@
                                                         value="<?php echo $this->session->userdata('username') ?>">
                                                 </div>
                                                 <br>
-
                                                 <div class="p-2 col-6">
                                                     <label for="" class="form-label fs-5">Nama
                                                         <br>
@@ -110,13 +81,12 @@
                                 </div>
 
 
-
                                 <div class="d-flex p-2 row justify-content-evenly ">
-                                <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded col-5">
+                                <button class="bg-gray-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded col-5">
                                     Ubah Profil
                                 </button>
 
-                                    <a class="btn btn-danger font-bold py-2 col-5" href="<?php echo base_url('karyawan/hapus_image'); ?>">Hapus Foto</a>
+                                    <a class="btn btn-secondary font-bold py-2 col-5" href="<?php echo base_url('karyawan/hapus_image'); ?>">Hapus Foto</a>
                                 </div>
 
                                 <br>
@@ -146,7 +116,7 @@
         </div>
             </div>
             <div class="d-flex p-2 row justify-content-evenly ">
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <button class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
                 Ubah Password
             </button>
     </form>

@@ -189,32 +189,32 @@
                     <table class="my-4 w-full divide-y divide-gray-300 text-center">
                         <thead class="bg-gray-50">
                             <tr>
-                                <th class="px-5 py-3 text-xs text-gray-500">NO</th>
-                                <th class="px-5 py-3 text-xs text-gray-500">
+                                <th class="px-4 py-3 text-xs text-gray-500">NO</th>
+                                <th class="px-4 py-3 text-xs text-gray-500">
                                     KEGIATAN
                                 </th>
-                                <th class="px-5 py-3 text-xs text-gray-500">TANGGAL</th>
-                                <th class="px-5 py-3 text-xs text-gray-500">JAM MASUK</th>
-                                <th class="px-5 py-3 text-xs text-gray-500">JAM PULANG</th>
-                                <th class="px-5 py-3 text-xs text-gray-500">KETERANGAN IZIN</th>
+                                <th class="px-4 py-3 text-xs text-gray-500">TANGGAL</th>
+                                <th class="px-4 py-3 text-xs text-gray-500">JAM MASUK</th>
+                                <th class="px-4 py-3 text-xs text-gray-500">JAM PULANG</th>
+                                <th class="px-4 py-3 text-xs text-gray-500">KETERANGAN IZIN</th>
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-300">
                             <?php $no=0; foreach ($rekap_semua as $absen): $no++ ?>
                             <tr class="whitespace-nowrap">
-                                <td class="px-3 py-4 text-sm text-gray-500"><?php echo $no ?></td>
+                                <td class="px-5 py-3 text-sm text-gray-500"><?php echo $no ?></td>
                                 
-                                <td class="px-3 py-4">
+                                <td class="px-5 py-3">
                                     <div class="text-sm text-gray-900">
                                         <?php echo $absen->kegiatan; ?>
                                     </div>
                                 </td>
-                                <td class="px-3 py-4">
+                                <td class="px-5 py-3">
                                     <div class="text-sm text-gray-900">
                                         <?php echo $absen->date; ?>
                                     </div>
                                 </td>
-                                <td class="px-3 py-4">
+                                <td class="px-5 py-3">
                                     <div class="text-sm text-gray-900">
                                         <?php if( $absen->jam_masuk == NULL) {
                         echo '-';
@@ -223,7 +223,7 @@
                       }?>
                                     </div>
                                 </td>
-                                <td class="px-3 py-4">
+                                <td class="px-5 py-3">
                                     <div class="text-sm text-gray-900">
                                         <?php if( $absen->jam_pulang == NULL) {
                         echo '-';
@@ -232,7 +232,7 @@
                       }?>
                                     </div>
                                 </td>
-                                <td class="px-3 py-4">
+                                <td class="px-5 py-3">
                                     <div class="text-sm text-gray-900">
                                         <?php echo $absen->keterangan_izin; ?>
                                     </div>
