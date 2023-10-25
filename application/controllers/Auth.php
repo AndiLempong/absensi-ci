@@ -13,6 +13,12 @@ class Auth extends CI_Controller {
 		$this->load->view('auth/login');
 	}
 
+	public function logout()
+    {
+        $this->session->sess_destroy();
+        redirect(base_url('absensi/login'));
+    }
+
 
 	public function aksi_login()
     {
