@@ -31,7 +31,7 @@ class M_model extends CI_Model{
 // m_model profil
 public function get_foto_by_id($id)
 {
-    $this->db->select('image');
+    $this->db->select('foto');
     $this->db->from('admin');
     $this->db->where('id', $id);
     $query = $this->db->get();
@@ -48,9 +48,6 @@ public function get_foto_by_id($id)
 
 //m_model admin
     public function register($data) {
-        $this->db->insert('admin', $data);
-    }
-    public function register_karyawan($data) {
         $this->db->insert('admin', $data);
     }
 

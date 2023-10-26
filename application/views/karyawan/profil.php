@@ -27,103 +27,8 @@
 </style>
 </head>
 
-<body >
-    <!-- <div class="card m-auto p-5"> -->
-<br>
-<div>
-<div class="row d-flex">
-    <div class="w-100 m-auto p-3">
-        
-        <br>
-        <div><?php echo $this->session->flashdata('message'); ?></div>
-        <div><?php echo $this->session->flashdata('sukses'); ?></div>
-        <div class="row d-flex">
-            <input name="id" type="hidden" value="<?php echo $this->session->userdata('id'); ?>">
-            <span class="border border-0 btn btn-link">
-                <?php if (!empty($row->foto)): ?>
-                    <img src="<?php echo $row->foto ?>" height="150"
-                    width="150" class="rounded-circle">
-                    <?php else: ?>
-                        <img class="rounded-circle " height="150" width="150"
-                        src="https://i.pinimg.com/originals/90/29/a2/9029a2eafc1b93fdb11241b57ba56d38.jpg" />
-                        <?php endif;?>
-                    </span>
-                    <br>
-                    <br>
-                    <form method="post"
-                    action="<?php echo base_url('karyawan/aksi_update_profile'); ?>"
-                    enctype="multipart/form-data">
-                    <input name="id" type="hidden" value="<?php echo $this->session->userdata('id'); ?>">
-                    <div class="d-flex flex-row ">
-                                                <div class="p-2 col-6">
-                                                    <label for="" class="form-label fs-5">Nama
-                                                        <br>
-                                                        Depan </label>
-                                                    <input type="text" class="form-control" id="nama_depan"
-                                                        name="nama_depan" placeholder="Nama Depan"
-                                                        value="<?php echo $this->session->userdata('nama_depan'); ?>">
-
-                                                    <label for="" class="form-label fs-5">Username </label>
-                                                    <input type="text" class="form-control" id="username"
-                                                        name="username" placeholder="Username"
-                                                        value="<?php echo $this->session->userdata('username') ?>">
-                                                </div>
-                                                <br>
-                                                <div class="p-2 col-6">
-                                                    <label for="" class="form-label fs-5">Nama
-                                                        <br>
-                                                        Belakang </label>
-                                                    <input type="text" class="form-control" id="nama_belakang"
-                                                        name="nama_belakang" placeholder="Nama Belakang"
-                                                        value="<?php echo $this->session->userdata('nama_belakang') ?>">
-
-                                                </div>
-                                            </div>
-                                            <input type="file" name="image" class="p-3">
-                                    </div>
-                                </div>
-
-
-                                <div class="d-flex p-2 row justify-content-evenly ">
-                                <button class="bg-gray-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded col-5">
-                                    Ubah Profil
-                                </button>
-
-                                    <a class="btn btn-secondary font-bold py-2 col-5" href="<?php echo base_url('karyawan/hapus_image'); ?>">Hapus Foto</a>
-                                </div>
-                                <br>
-                                </form>
-
-            </div>
-    <br>
-    <!-- pw -->
-    <form method="post" action="<?php echo base_url('karyawan/aksi_ubah_password')?>" enctype="multipart/form_data">
-        <div class="d-flex flex-row ">
-            <div class="p-2 col-4 >
-            <label for=" nama="" class="form-label fs-5">Password Lama </label>
-                <input type="text" class="form-control" id="password_lama" name="password_lama"
-                    placeholder="Password Lama" value=>
-            </div>
-            <div class="p-2 col-4 >
-            <label for=" nama="" class="form-label fs-5">Password Baru </label>
-                <input type="text" class="form-control" id="password_baru" name="password_baru"
-                    placeholder="Password Baru" value=>
-            </div>
-            <div class="p-2 col-4 >
-            <label for=" nama="" class="form-label fs-5"> Konfirmasi password</label>
-                <input type="text" class="form-control" id="password_konfirmasi" name="password_konfirmasi"
-                    placeholder="Konfirmasi Paswword" value=>
-            </div>
-        </div>
-            </div>
-            <div class="d-flex p-2 row justify-content-evenly ">
-            <button class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
-                Ubah Password
-            </button>
-    </form>
-
-<!-- page sidebar -->
-            <aside id="default-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+<body>
+<aside id="default-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
    <div class="h-full px-3 py-4 overflow-y-auto bg-blue-50 dark:bg-blue-800">
       <ul class="space-y-2 font-medium">
          <li>
@@ -193,6 +98,100 @@
     </script>
       </div>
     </div>
+
+    <div class="card m-auto p-4">
+<br>
+<div>
+<div class="row d-flex">
+    <div class="w-100 m-auto p-8">
+        
+        <br>
+        <div><?php echo $this->session->flashdata('message'); ?></div>
+        <div><?php echo $this->session->flashdata('sukses'); ?></div>
+        <div class="row d-flex">
+            <input name="id" type="hidden" value="<?php echo $this->session->userdata('id'); ?>">
+            <span class="border border-0 btn btn-link">
+                <?php if (!empty($row->foto)): ?>
+                    <img src="<?php echo $row->foto ?>" height="150"
+                    width="150" class="rounded-circle">
+                    <?php else: ?>
+                        <img class="rounded-circle " height="150" width="150"
+                        src="https://i.pinimg.com/originals/90/29/a2/9029a2eafc1b93fdb11241b57ba56d38.jpg" />
+                        <?php endif;?>
+                    </span>
+                    <br>
+                    <br>
+                    <form method="post"
+                    action="<?php echo base_url('karyawan/aksi_update_profile'); ?>"
+                    enctype="multipart/form-data">
+                    <input name="id" type="hidden" value="<?php echo $this->session->userdata('id'); ?>">
+                    <div class="d-flex flex-row ">
+                                                <div class="p-2 col-6">
+                                                    <label for="" class="form-label fs-5">Nama
+                                                        <br>
+                                                        Depan </label>
+                                                    <input type="text" class="form-control" id="nama_depan"
+                                                        name="nama_depan" placeholder="Nama Depan"
+                                                        value="<?php echo $this->session->userdata('nama_depan'); ?>">
+
+                                                    <label for="" class="form-label fs-5">Username </label>
+                                                    <input type="text" class="form-control" id="username"
+                                                        name="username" placeholder="Username"
+                                                        value="<?php echo $this->session->userdata('username') ?>">
+                                                </div>
+                                                <br>
+                                                <div class="p-2 col-6">
+                                                    <label for="" class="form-label fs-5">Nama
+                                                        <br>
+                                                        Belakang </label>
+                                                    <input type="text" class="form-control" id="nama_belakang"
+                                                        name="nama_belakang" placeholder="Nama Belakang"
+                                                        value="<?php echo $this->session->userdata('nama_belakang') ?>">
+
+                                                </div>
+                                            </div>
+                                            <input type="file" name="foto" class="p-3">
+                                    </div>
+                                </div>
+
+
+                                <div class="d-flex p-2 row justify-content-evenly ">
+                                <button class="bg-gray-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded col-5">
+                                    Ubah Profil
+                                </button>
+
+                                    <a class="btn btn-secondary font-bold py-2 col-5" href="<?php echo base_url('karyawan/hapus_image'); ?>">Hapus Foto</a>
+                                </div>
+                                <br>
+                                </form>
+
+            </div>
+    <br>
+    <!-- pw -->
+    <form method="post" action="<?php echo base_url('karyawan/aksi_ubah_password')?>" enctype="multipart/form_data">
+        <div class="d-flex flex-row ">
+            <div class="p-2 col-4 >
+            <label for=" nama="" class="form-label fs-5">Password Lama </label>
+                <input type="text" class="form-control" id="password_lama" name="password_lama"
+                    placeholder="Password Lama" value=>
+            </div>
+            <div class="p-2 col-4 >
+            <label for=" nama="" class="form-label fs-5">Password Baru </label>
+                <input type="text" class="form-control" id="password_baru" name="password_baru"
+                    placeholder="Password Baru" value=>
+            </div>
+            <div class="p-2 col-4 >
+            <label for=" nama="" class="form-label fs-5"> Konfirmasi password</label>
+                <input type="text" class="form-control" id="password_konfirmasi" name="password_konfirmasi"
+                    placeholder="Konfirmasi Paswword" value=>
+            </div>
+        </div>
+            </div>
+            <div class="d-flex p-2 row justify-content-evenly ">
+            <button class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+                Ubah Password
+            </button>
+    </form>
 
     <script type="text/javascript">
       function dropdown() {

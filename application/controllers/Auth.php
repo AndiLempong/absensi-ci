@@ -34,15 +34,14 @@ class Auth extends CI_Controller {
                 'email' => $result['email'],
                 'username' => $result['username'],
                 'role' => $result['role'],
-                'nama_depan' => $result['nama_depan'],
-                'nama_belakang' => $result['nama_belakang'],
                 'id' => $result['id'],
             ];
             $this->session->set_userdata($data);
+
             if ($this->session->userdata('role') == 'admin') {
                 redirect(base_url('karyawan/dashboard'));
             }elseif ($this->session->userdata('role') == 'karyawan') {
-            redirect(base_url('karyawan/karyawan'))  ;
+            redirect(base_url('karyawan/dashboard'));
             } else {
                 redirect(base_url('absensi/login'));
             }
@@ -73,6 +72,7 @@ class Auth extends CI_Controller {
 		'password' => $this->input->post('password'),
 		'nama_depan' => $this->input->post('nama_depan'),
 		'nama_belakang' => $this->input->post('nama_belakang'),
+		'role' => 'admin',
 	];
 
 	$this->m_model->register($data);
@@ -86,6 +86,7 @@ class Auth extends CI_Controller {
 		'password' => $this->input->post('password'),
 		'nama_depan' => $this->input->post('nama_depan'),
 		'nama_belakang' => $this->input->post('nama_belakang'),
+		'role' => 'karyawan',
 	];
 
 	$this->m_model->register_karyawan($data);

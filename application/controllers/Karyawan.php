@@ -3,10 +3,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Karyawan extends CI_Controller {
 	function __construct()
-	{
-		parent::__construct();
-		$this->load->model('m_model');	
-	}
+    {
+        parent::__construct();
+        $this->load->model('m_model');
+        $this->load->helper('my_helper');
+        $this->load->library('upload');
+        
+        if ($this->session->userdata('logged_in') != true || $this->session->userdata('role') != 'karyawan') {
+            redirect(base_url() . 'absensi/login');
+        }
+    }
 	
 	public function dashboard()
 	{
@@ -157,7 +163,7 @@ class Karyawan extends CI_Controller {
         $username = $this->input->post('username');
         $nama_depan = $this->input->post('nama_depan');
         $nama_belakang = $this->input->post('nama_belakang');
-        // $foto = $this->upload_img('foto');
+        $foto = $this->upload_img('foto');
         // Jika ada foto yang diunggah
         if ($foto) {
             $kode = round(microtime(true) * 100);
@@ -213,10 +219,10 @@ class Karyawan extends CI_Controller {
         $eksekusi = $this->m_model->ubah_data('admin', $data, array('id'=>$this->session->userdata('id')));
         if($eksekusi) {
             
-            $this->session->set_flashdata('sukses' , 'berhasil');
+            $this->session->set_flashdata('sukses', '<div class="alert alert-success alert-dismissible fade show" role="alert">Berhasil Menghapus Foto<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>');
             redirect(base_url('karyawan/profil'));
         } else {
-            $this->session->set_flashdata('error' , 'gagal...');
+            $this->session->set_flashdata('error', '<div class="alert alert-success alert-dismissible fade show" role="alert">Gagal Menghapus Foto<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>');
             redirect(base_url('karyawan/profil'));
         }
     }
@@ -241,7 +247,7 @@ class Karyawan extends CI_Controller {
                     $this->session->set_flashdata('sukses', '<div class="alert alert-success alert-dismissible fade show" role="alert">Berhasil Merubah Password<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>');
                             redirect(base_url('karyawan/profil'));
                 } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show" role="alert">Password Baru dan Konfirmasi Password Tidak Cocok<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>');
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show" role="alert">Password Baru dan Konfirmasi Password Salah<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>');
                         redirect(base_url('karyawan/profil'));
                 }
             } else {
