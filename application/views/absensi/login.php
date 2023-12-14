@@ -46,13 +46,13 @@ height: 100%;
           <!-- Inputan Email -->
           <div class="form-outline mb-2 ">
               <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-              <input type="Email" name="email" id="form3Example3" placeholder="Masukkan Email" />
+              <input type="Email" name="email" id="form3Example3" placeholder="Masukkan Email" required>
           </div>
 
           <!-- Inputan Password -->
           <div class="form-outline mb-2">
               <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
-              <input type="Password" name="password" id="form3Example4" placeholder="Masukkan Password" />
+              <input type="Password" name="password" id="form3Example4" placeholder="Masukkan Password" required >
           </div>
           
 
