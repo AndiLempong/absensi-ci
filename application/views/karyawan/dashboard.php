@@ -1,203 +1,776 @@
 <!DOCTYPE html>
+<!-- Coding By CodingNepal - codingnepalweb.com -->
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="/dist/tailwind.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css" />
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
-    <style>
-        body {
-            margin: 0;
-            padding-left: 50vh;
-            /* padding-right:50vh; */
-            min-height: 100vh;
-            /* background-color: #000000; */
-        }
-    </style>
 
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!----===== Iconscout CSS ===== -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <!-- Script -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="path-to-sweetalert2.css">
+    <!-- Replace 'path-to-sweetalert2.css' with the actual path to your SweetAlert CSS file -->
+    <script src="path-to-sweetalert2.js"></script>
+    <!-- Replace 'path-to-sweetalert2.js' with the actual path to your SweetAlert JavaScript file -->
+    <title>Dashboard</title>
 </head>
+<style>
+    /* ===== Google Font Import - Poppins ===== */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    :root {
+        /* ===== Colors ===== */
+        --primary-color: #004225;
+        --panel-color: #FFF;
+        --text-color: #000;
+        --black-light-color: #61677A;
+        --border-color: #B2B1B9;
+        --toggle-color: #DDD;
+        --box1-color: #4DA3FF;
+        --box2-color: #FFE6AC;
+        --box3-color: #E7D1FC;
+        --title-icon-color: #fff;
+
+        /* ====== Transition ====== */
+        --tran-05: all 0.5s ease;
+        --tran-03: all 0.3s ease;
+        --tran-03: all 0.2s ease;
+    }
+
+    body {
+        min-height: 100vh;
+        background-color: var(--primary-color);
+    }
+
+    /* body.dark {
+        --primary-color: #3A3B3C;
+        --panel-color: #000;
+        --text-color: #CCC;
+        --black-light-color: #CCC;
+        --border-color: #4D4C4C;
+        --toggle-color: #FFF;
+        --box1-color: #3A3B3C;
+        --box2-color: #3A3B3C;
+        --box3-color: #3A3B3C;
+        --title-icon-color: #CCC;
+    } */
+
+    /* === Custom Scroll Bar CSS === */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--primary-color);
+        border-radius: 12px;
+        transition: all 0.3s ease;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #0b3cc1;
+    }
+
+    body.dark::-webkit-scrollbar-thumb:hover,
+    body.dark .activity-data::-webkit-scrollbar-thumb:hover {
+        background: #3A3B3C;
+    }
+
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 250px;
+        padding: 10px 14px;
+        background-color: var(--panel-color);
+        border-right: 1px solid var(--border-color);
+        transition: var(--tran-05);
+    }
+
+    nav.close {
+        width: 73px;
+    }
+
+    nav .logo-name {
+        display: flex;
+        align-items: center;
+    }
+
+    nav .logo-image {
+        display: flex;
+        justify-content: center;
+        min-width: 45px;
+    }
+
+    nav .logo-image img {
+        width: 40px;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
+    nav .logo-name .logo_name {
+        font-size: 22px;
+        font-weight: 600;
+        color: var(--text-color);
+        margin-left: 14px;
+        transition: var(--tran-05);
+    }
+
+    nav.close .logo_name {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    nav .menu-items {
+        margin-top: 40px;
+        height: calc(100% - 90px);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .menu-items li {
+        list-style: none;
+    }
+
+    .menu-items li a {
+        display: flex;
+        align-items: center;
+        height: 65px;
+        text-decoration: none;
+        position: relative;
+    }
+
+    .nav-links li a:hover:before {
+        content: "";
+        position: absolute;
+        left: -7px;
+        height: 5px;
+        width: 5px;
+        border-radius: 50%;
+        background-color: var(--primary-color);
+    }
+
+    body.dark li a:hover:before {
+        background-color: var(--text-color);
+    }
+
+    .menu-items li a i {
+        font-size: 24px;
+        min-width: 45px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--black-light-color);
+    }
+
+    .menu-items li a .link-name {
+        font-size: 21px;
+        font-weight: 400;
+        color: var(--black-light-color);
+        transition: var(--tran-05);
+    }
+
+    nav.close li a .link-name {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .nav-links li a:hover i,
+    .nav-links li a:hover .link-name {
+        color: var(--primary-color);
+    }
+
+    body.dark .nav-links li a:hover i,
+    body.dark .nav-links li a:hover .link-name {
+        color: var(--text-color);
+    }
+
+    .menu-items .logout-mode {
+        padding-top: 10px;
+        border-top: 1px solid var(--border-color);
+    }
+
+    .dashboard {
+        position: relative;
+        left: 250px;
+        background-color: var(--panel-color);
+        min-height: 100vh;
+        width: calc(100% - 250px);
+        padding: 10px 14px;
+        transition: var(--tran-05);
+    }
+
+    nav.close~.dashboard {
+        left: 73px;
+        width: calc(100% - 73px);
+    }
+
+    .dashboard .top {
+        position: fixed;
+        top: 0;
+        left: 250px;
+        display: flex;
+        width: calc(100% - 250px);
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 14px;
+        background-color: var(--panel-color);
+        transition: var(--tran-05);
+        z-index: 10;
+    }
+
+    nav.close~.dashboard .top {
+        left: 73px;
+        width: calc(100% - 73px);
+    }
+
+    .dashboard .top .sidebar-toggle {
+        font-size: 26px;
+        color: var(--text-color);
+        cursor: pointer;
+    }
+
+    .dashboard .top .search-box {
+        position: relative;
+        height: 45px;
+        max-width: 600px;
+        width: 100%;
+        margin: 0 30px;
+    }
+
+    .top img {
+        width: 40px;
+        border-radius: 50%;
+    }
+
+    .dashboard .dash-content {
+        padding-top: 50px;
+    }
+
+    .dash-content .title {
+        display: flex;
+        align-items: center;
+        margin: 60px 0 30px 0;
+    }
+
+    .dash-content .title i {
+        position: relative;
+        height: 35px;
+        width: 35px;
+        background-color: var(--primary-color);
+        border-radius: 6px;
+        color: var(--title-icon-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+    }
+
+    .dash-content .title .text {
+        font-size: 24px;
+        font-weight: 500;
+        color: dark;
+        margin-left: 10px;
+    }
+
+    .dash-content .boxes {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .dash-content .boxes .box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 12px;
+        width: calc(100% / 3 - 15px);
+        padding: 15px 20px;
+        background-color: var(--box1-color);
+        transition: var(--tran-05);
+    }
+
+    .boxes .box i {
+        font-size: 35px;
+        color: var(--text-color);
+    }
+
+    .boxes .box .text {
+        white-space: nowrap;
+        font-size: 18px;
+        font-weight: 500;
+        color: var(--text-color);
+    }
+
+    .boxes .box .number {
+        font-size: 40px;
+        font-weight: 500;
+        color: var(--text-color);
+    }
+
+    .boxes .box.box2 {
+        background-color: var(--box2-color);
+    }
+
+    .boxes .box.box3 {
+        background-color: var(--box3-color);
+    }
+
+    .dash-content .activity .activity-data {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .activity .activity-data {
+        display: flex;
+    }
+
+    .activity-data .data {
+        display: flex;
+        flex-direction: column;
+        margin: 0 15px;
+    }
+
+    .activity-data .data-title {
+        font-size: 20px;
+        font-weight: 500;
+        color: var(--text-color);
+    }
+
+    .activity-data .data .data-list {
+        font-size: 18px;
+        font-weight: 400;
+        margin-top: 20px;
+        white-space: nowrap;
+        color: var(--text-color);
+    }
+
+    @media (max-width: 1000px) {
+        nav {
+            width: 73px;
+        }
+
+        nav.close {
+            width: 250px;
+        }
+
+        nav .logo_name {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        nav.close .logo_name {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        nav li a .link-name {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        nav.close li a .link-name {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        nav~.dashboard {
+            left: 73px;
+            width: calc(100% - 73px);
+        }
+
+        nav.close~.dashboard {
+            left: 250px;
+            width: calc(100% - 250px);
+        }
+
+        nav~.dashboard .top {
+            left: 73px;
+            width: calc(100% - 73px);
+        }
+
+        nav.close~.dashboard .top {
+            left: 250px;
+            width: calc(100% - 250px);
+        }
+
+        .activity .activity-data {
+            overflow-X: scroll;
+        }
+    }
+
+    @media (max-width: 780px) {
+        .dash-content .boxes .box {
+            width: calc(100% / 2 - 15px);
+            margin-top: 15px;
+        }
+    }
+
+    @media (max-width: 560px) {
+        .dash-content .boxes .box {
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 400px) {
+        nav {
+            width: 0px;
+        }
+
+        nav.close {
+            width: 73px;
+        }
+
+        nav .logo_name {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        nav.close .logo_name {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        nav li a .link-name {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        nav.close li a .link-name {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        nav~.dashboard {
+            left: 0;
+
+            width: 100%;
+        }
+
+        nav.close~.dashboard {
+            left: 73px;
+            width: calc(100% - 73px);
+        }
+
+        nav~.dashboard .top {
+            left: 0;
+            width: 100%;
+        }
+
+        nav.close~.dashboard .top {
+            left: 0;
+            width: 100%;
+        }
+    }
+</style>
 
 <body>
-    <?php $this->load->view('absensi/sidebar'); ?>
-    <section>
-        <div class="container text-center">
-            <div class="row p-5">
-                <div class="col-lg-4 col-md-6 mb-4 ">
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body ">
-                            <p class="text-uppFercase small mb-1">
-                                <strong>total data karyawan</strong>
-                                <hr>
-                                <hr>
-                                <hr>
-                                <hr>
-                            </p>
-                            <h5 class="mb-0">
-                                <small class="text-success ms-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="3em" class="" viewBox="0 0 448 512">
-                                        <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
-                                    </svg>
-                                    <p>
-                                        <?php echo $admin ?>
-                                    </p>
-                                </small>
-                            </h5>
-                            <p class="text-uppercase text-muted small mb-1">
-                            </p>
-                            <h5 class="text-muted mb-0"> <a href="" class=" fs-5 btn btn-sm text-fark ">Data
-                                    Lengkap</a>
-                            </h5>
-                        </div>
-                    </div>
-                </div>
+    <nav>
+        <div class="logo-name">
+            <div class="logo-image">
+                <img src="https://tse1.mm.bing.net/th?id=OIP.xKEbKVRjeWNbWnFmFDiGxgHaHa&pid=Api&P=0&h=180" alt="">
+            </div>
 
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <p class="text-uppercase small mb-1">
-                                <strong>total data absensi</strong>
-                                <hr>
-                                <hr>
-                                <hr>
-                                <hr>
-                            </p>
-                            <h5 class="mb-0">
-                                <small class="text-success ms-2"><svg xmlns="http://www.w3.org/2000/svg" height="3em" viewBox="0 0 448 512">
-                                        <path d="M224 256A128 128 0 1 1 224 0a128 128 0 1 1 0 256zM209.1 359.2l-18.6-31c-6.4-10.7 1.3-24.2 13.7-24.2H224h19.7c12.4 0 20.1 13.6 13.7 24.2l-18.6 31 33.4 123.9 36-146.9c2-8.1 9.8-13.4 17.9-11.3c70.1 17.6 121.9 81 121.9 156.4c0 17-13.8 30.7-30.7 30.7H285.5c-2.1 0-4-.4-5.8-1.1l.3 1.1H168l.3-1.1c-1.8 .7-3.8 1.1-5.8 1.1H30.7C13.8 512 0 498.2 0 481.3c0-75.5 51.9-138.9 121.9-156.4c8.1-2 15.9 3.3 17.9 11.3l36 146.9 33.4-123.9z" />
-                                    </svg>
-                                </small>
-                                <p>
-                                    <?php echo $data ?>
-                                </p>
-                            </h5>
+            <a>Karyawan</a>
+        </div>
 
-                            <p class="text-uppercase text-muted small mb-1">
-                            </p>
-                            <h5 class="text-muted mb-0"> <a href="" class=" fs-5 btn btn-sm text-dark">Data
-                                    Lengkap</a></h5>
-                        </div>
+        <div class="menu-items">
+            <ul class="nav-links" style="padding-left:16px;">
+                <li><a href="<?php echo base_url('karyawan/dashboard') ?>">
+                        <i class="fa-solid fa-gauge"></i>
+                        <span class="link-name">Dashboard</span>
+                    </a></li>
+
+                <li><a href="<?php echo base_url('karyawan/history') ?>">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                        <span class="link-name">History Absensi</span>
+                    </a></li>
+
+                <li><a href="<?php echo base_url('karyawan/absensi') ?>">
+                        <i class="fa-solid fa-user-plus"></i>
+                        <span class="link-name">Absensi</span>
+                    </a></li>
+
+                <li><a href="<?php echo base_url('karyawan/izin') ?>">
+                        <i class="fa-solid fa-user-minus"></i>
+                        <span class="link-name">Izin</span>
+                    </a></li>
+
+                <li><a href="<?php echo base_url('karyawan/profil') ?>">
+                        <i class="fa-solid fa-user-tie"></i>
+                        <span class="link-name">Profil</span>
+                    </a></li>
+
+                <br>
+                <li class="mode">
+                    <div class="mode-toggle">
+                        <span class="switch"></span>
                     </div>
+                </li>
+
+                <li class="logout-mode  ">
+
+                <li>
+                    <span id="clock" name="date" class="text-white link-name"> </span>
+                </li>
+
+                <li>
+                    <span id="clock2" name="date2" class="text-dark link-name"> </span>
+                </li>
+
+                <li><a class="btn btn-lg position-absolute bottom-0 start-0   " onclick=" logout(id)">
+                        <i class="fa-solid fa-right-to-bracket"></i>
+                        <span class="link-name">Keluar</span>
+                    </a>
+                </li>
+        </div>
+    </nav>
+
+    <section class="dashboard">
+        <div class="top">
+            <i class="uil uil-bars sidebar-toggle"></i>
+        </div>
+
+        <div class="title  ">
+            <span class="text  ">Dashboard</span>
+        </div>
+
+        <div class="overview shadow-lg p-1 mb-3 bg-body rounded">
+            <div class="d-flex justify-content-center ">
+                <div class="card border card w-50 ">
+                    <p class=" fs-3 text-white text-center p-4 bg-success">Total <br> Karyawan</p>
+                    <p class=" fs-1 text-success text-center">
+                        <i class="fa-solid fa-user-plus"></i>
+                        <?php echo $admin; ?>
+                    </p>
                 </div>
+                <div class="card  border card w-50">
+                    <p class=" fs-3 text-white text-center p-4 bg-success">Total
+                        <br>Izin
+                    </p>
+
+                    <p class=" fs-1 text-success text-center">
+                        <i class="fa-solid fa-user-minus"></i>
+                        <?php echo $data; ?>
+                    </p>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </main>
+        <div class="overview shadow-lg p-2 mb-3 bg-body rounded">
+            <div class="overflow-auto" style="white-space: nowrap;">
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr class="table-hover">
+                            <th scope="col">No</th>
+                            <th scope="col">Kegiatan</th>
+                            <th scope="col">Tanggal</th>
+                            <th scope="col">Jam Masuk</th>
+                            <th scope="col">Jam Keluar</th>
+                            <th scope="col">Keterangan Izin</th>
+                            <th scope="col">Status</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $no = 0;
+                        foreach ($absensi as $row) : $no++ ?>
+                            <tr class=" whitespace-nowrap">
+                                <td class="px-3 py-4 text-sm text-gray-500"><?php echo $no ?>
+                                </td>
+                                <td class="px-3 py-4">
+                                    <div class="text-sm text-gray-900">
+                                        <?php echo $row->kegiatan ?>
+                                    </div>
+                                </td>
+                                <td class="px-3 py-4">
+                                    <div class="text-sm text-gray-900">
+                                        <?php echo $row->date ?>
+                                    </div>
+                                </td>
+                                <td class="px-3 py-4">
+                                    <div class="text-sm text-gray-900">
+                                        <?php if ($row->jam_masuk == NULL) {
+                                            echo '-';
+                                        } else {
+                                            echo $row->jam_masuk;
+                                        } ?>
+                                    </div>
+                                </td>
+                                <td class="px-3 py-4">
+                                    <div class="text-sm text-gray-900">
+                                        <?php if ($row->jam_pulang == NULL) {
+                                            echo '-';
+                                        } else {
+                                            echo $row->jam_pulang;
+                                        } ?>
+                                    </div>
+                                </td>
+                                <td class="px-3 py-4">
+                                    <div class="text-sm text-gray-900">
+                                        <?php if ($row->keterangan_izin == NULL) {
+                                            echo '-';
+                                        } else {
+                                            echo $row->keterangan_izin;
+                                        } ?>
+                                    </div>
+                                </td>
+                                <td class="px-3 py-4">
+                                    <div class="text-sm text-gray-900">
+                                        <?php if ($row->status == NULL) {
+                                            echo 'not';
+                                        } else {
+                                            echo $row->status;
+                                        } ?>
+                                </td>
+                            </tr>
+                        <?php endforeach ?>
+                    </tbody>
+                </table>
 
             </div>
         </div>
+        </div>
+        </div>
+        </div>
     </section>
-    </div>
-    </div>
-    <!-- tabel -->
-    <div class="relative min-h-screen md:flex" data-dev-hint="container">
-        <main id="content" class="max-h-screen overflow-y-auto flex-1 p-6 lg:px-8">
-            <div class="container mx-auto">
-                <div class="grid grid-cols-1 px-2 md:grid-cols-3 rounded-t-lg py-2.5 bg-gray-900 text-white text-xl">
-                    <div class="flex justify-center mb-2 md:justify-start md:pl-6">
-                        DASHBOARD KARYAWAN
-                    </div>
-                </div>
-                <div class="overflow-x-auto w-full px-4 bg-white rounded-b-lg shadow">
-                    <table class="my-4 w-full divide-y divide-gray-300 text-center">
-                        <thead class="bg-gray-50">
-                            <tr>
-                                <th class="px-4 py-3 text-xs text-gray-500">NO</th>
-                                <th class="px-4 py-3 text-xs text-gray-500">
-                                    KEGIATAN
-                                </th>
-                                <th class="px-5 py-3 text-xs text-gray-500">TANGGAL</th>
-                                <th class="px-5 py-3 text-xs text-gray-500">JAM MASUK</th>
-                                <th class="px-5 py-3 text-xs text-gray-500">JAM PULANG</th>
-                                <th class="px-5 py-3 text-xs text-gray-500">KETERANGAN IZIN</th>
-                                <th class="px-5 py-3 text-xs text-gray-500">STATUS</th>
-                            </tr>
-                        </thead>
-                        <tbody class="bg-white divide-y divide-gray-300">
-                            <?php $no = 0;
-                            foreach ($absensi as $row) : $no++ ?>
-                                <tr class="whitespace-nowrap">
-                                    <td class="px-5 py-3 text-sm text-gray-500"><?php echo $no ?></td>
-                                    <td class="px-5 py-3">
-                                        <div class="text-sm text-gray-900">
-                                            <?php echo $row->kegiatan; ?>
-                                        </div>
-                                    </td>
-                                    <td class="px-5 py-3">
-                                        <div class="text-sm text-gray-900">
-                                            <?php echo $row->date; ?>
-                                        </div>
-                                    </td>
-                                    <td class="px-5 py-3">
-                                        <div class="text-sm text-gray-900">
-                                            <?php echo $row->jam_masuk; ?>
-                                        </div>
-                                    </td>
-                                    <td class="px-5 py-3">
-                                        <div class="text-sm text-gray-900">
-                                            <?php echo $row->jam_pulang; ?>
-                                        </div>
-                                    </td>
-                                    <td class="px-5 py-3">
-                                        <div class="text-sm text-gray-900">
-                                            <?php echo $row->keterangan_izin; ?>
-                                        </div>
-                                    </td>
-                                    <td class="px-5 py-3">
-                                        <div class="text-sm text-gray-900">
-                                            <?php echo $row->status; ?>
-                                        </div>
-                                    </td>
-                                </tr>
-                            <?php endforeach ?>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </main>
-    </div>
 
-    <script type="text/javascript">
-        function dropdown() {
-            document.querySelector("#submenu").classList.toggle("hidden");
-            document.querySelector("#arrow").classList.toggle("rotate-0");
-        }
-        dropdown();
+    <script>
+        function updateClock() {
+            var now = new Date();
+            var clock = document.getElementById('clock');
 
-        function openSidebar() {
-            document.querySelector(".sidebar").classList.toggle("hidden");
+            var options = {
+                hour12: false
+            };
+            clock.innerHTML = now.toLocaleTimeString(undefined, options);
         }
 
-        function logout(id) {
-            swal.fire({
-                title: ' Yakin Ingin Log Out',
-                text: "",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                cancelButtonText: 'Batal',
-                confirmButtonText: 'Log Out'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Log Out',
-                        showConfirmButton: false,
-                        timer: 1500,
+        // Memperbarui jam setiap detik
+        setInterval(updateClock, 1000);
 
-                    }).then(function() {
-                        window.location.href = "<?php echo base_url('auth/logout/') ?>" + id;
-                    });
-                }
-            });
+
+        function updateClock2() {
+            var now = new Date();
+            var clock = document.getElementById('clock2');
+
+            var options = {
+                hour12: false
+            };
+            clock.innerHTML = now.toLocaleTimeString(undefined, options);
         }
+
+        // Memperbarui jam setiap detik
+        setInterval(updateClock2, 1000);
+    </script>
+    <script>
+        $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+    </script>
+    <script src="script.js"></script>
+    <script>
+        const body = document.querySelector("body"),
+            modeToggle = body.querySelector(".mode-toggle");
+        sidebar = body.querySelector("nav");
+        sidebarToggle = body.querySelector(".sidebar-toggle");
+
+        let getStatus = localStorage.getItem("status");
+        if (getStatus && getStatus === "close") {
+            sidebar.classList.toggle("close");
+        }
+
+        sidebarToggle.addEventListener("click", () => {
+            sidebar.classList.toggle("close");
+            if (sidebar.classList.contains("close")) {
+                localStorage.setItem("status", "close");
+            } else {
+                localStorage.setItem("status", "open");
+            }
+        })
     </script>
 </body>
+<script>
+    function logout(id) {
+        swal.fire({
+            title: ' Yakin Ingin Log Out',
+            text: "",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'Batal',
+            confirmButtonText: 'Log Out'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Log Out',
+                    showConfirmButton: false,
+                    timer: 1500,
+
+                }).then(function() {
+                    window.location.href = "<?php echo base_url('auth/logout/') ?>" + id;
+                });
+            }
+        });
+    }
+
+    function displaySweetAlert() {
+        const message = "<?php echo $this->session->flashdata('sukses'); ?>";
+        const error = "<?php echo $this->session->flashdata('error'); ?>";
+
+        if (message) {
+            Swal.fire({
+                title: 'Success!',
+                text: message,
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
+        } else if (error) {
+            Swal.fire({
+                title: 'Error!',
+                text: error,
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+        }
+    }
+
+    // Call the function when the page loads
+    window.onload = displaySweetAlert;
+</script>
 
 </html>

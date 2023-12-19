@@ -3,6 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\Style\Alignment;
 
 class Admin extends CI_Controller
 {
@@ -159,7 +160,6 @@ class Admin extends CI_Controller
         require 'vendor/autoload.php';
 
         $spreadsheet = new Spreadsheet();
-
         // Buat lembar kerja aktif
         $sheet = $spreadsheet->getActiveSheet();
         // Data yang akan diekspor (contoh data)
@@ -179,19 +179,19 @@ class Admin extends CI_Controller
         $no = 1;
         foreach ($data as $rowData) {
             $columnIndex = 1;
-            $nama_karyawan = '';
+            $id_karyawan = '';
             $kegiatan = '';
-            $tanggal = '';
+            $date = '';
             $jam_masuk = '';
             $jam_pulang = '';
-            $izin = '';
+            $keterangan_izin = '';
             foreach ($rowData as $cellName => $cellData) {
                 if ($cellName == 'kegiatan') {
                     $kegiatan = $cellData;
-                } else if ($cellName == 'id_karyawan') {
-                    $nama_karyawan = tampil_id_karyawan($cellData);
+                } else if ($cellName == 'nama_karyawan') {
+                    $id_karyawan = tampil_id_karyawan($cellData);
                 } elseif ($cellName == 'date') {
-                    $tanggal = $cellData;
+                    $date = $cellData;
                 } elseif ($cellName == 'jam_masuk') {
                     if ($cellData == NULL) {
                         $jam_masuk = '-';
@@ -205,7 +205,7 @@ class Admin extends CI_Controller
                         $jam_pulang = $cellData;
                     }
                 } elseif ($cellName == 'keterangan_izin') {
-                    $izin = $cellData;
+                    $keterangan_izin = $cellData;
                 }
                 // Contoh: $sheet->setCellValueByColumnAndRow($columnIndex, $rowIndex, $cellData);
                 $columnIndex++;
@@ -213,12 +213,12 @@ class Admin extends CI_Controller
             // Setelah loop, Anda memiliki data yang diperlukan dari setiap kolom
             // Anda dapat mengisinya ke dalam lembar kerja Excel di sini
             $sheet->setCellValueByColumnAndRow(1, $rowIndex, $no);
-            $sheet->setCellValueByColumnAndRow(2, $rowIndex, $nama_karyawan);
+            $sheet->setCellValueByColumnAndRow(2, $rowIndex, $id_karyawan);
             $sheet->setCellValueByColumnAndRow(3, $rowIndex, $kegiatan);
-            $sheet->setCellValueByColumnAndRow(4, $rowIndex, $tanggal);
+            $sheet->setCellValueByColumnAndRow(4, $rowIndex, $date);
             $sheet->setCellValueByColumnAndRow(5, $rowIndex, $jam_masuk);
             $sheet->setCellValueByColumnAndRow(6, $rowIndex, $jam_pulang);
-            $sheet->setCellValueByColumnAndRow(7, $rowIndex, $izin);
+            $sheet->setCellValueByColumnAndRow(7, $rowIndex, $keterangan_izin);
             $no++;
 
             $rowIndex++;
